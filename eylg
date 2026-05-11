@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="目黒駅徒歩5分の完全個室パーソナルトレーニングジム「EYLG」。専属トレーナーによる科学的アプローチで、あなたの理想のボディメイクを最短距離でサポートします。無料レンタル完備で手ぶらで通えます。">
+    <title>目黒の完全個室パーソナルジム EYLG | 理想のボディメイク</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#d4af37',
+                        dark: '#0a0a0a',
+                        darker: '#000000',
+                        panel: '#1a1a1a',
+                        line: '#06C755'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+        .bg-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url('eylg02.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        /* モバイルでのタップハイライトを無効化 */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-darker text-gray-300 antialiased leading-relaxed">
+
+    <!-- ヘッダー -->
+    <header class="fixed w-full z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold tracking-widest text-white">
+                        EY<span class="text-primary">LG</span>
+                    </a>
+                </div>
+                <nav class="hidden lg:flex space-x-8">
+                    <a href="#concept" class="text-sm text-gray-300 hover:text-primary transition-colors">CONCEPT</a>
+                    <a href="#features" class="text-sm text-gray-300 hover:text-primary transition-colors">FEATURES</a>
+                    <a href="#results" class="text-sm text-gray-300 hover:text-primary transition-colors">RESULTS</a>
+                    <a href="#pricing" class="text-sm text-gray-300 hover:text-primary transition-colors">PRICING</a>
+                    <a href="#trainer" class="text-sm text-gray-300 hover:text-primary transition-colors">TRAINER</a>
+                    <a href="#faq" class="text-sm text-gray-300 hover:text-primary transition-colors">FAQ</a>
+                </nav>
+                <div class="hidden md:block">
+                    <a href="#contact" class="bg-primary text-black px-6 py-2 text-sm font-bold tracking-wider hover:bg-yellow-600 transition-colors rounded-sm">
+                        無料カウンセリング
+                    </a>
+                </div>
+                <!-- モバイル用メニューアイコン -->
+                <div class="lg:hidden flex items-center">
+                    <a href="#contact" class="bg-primary text-black px-3 py-1.5 text-xs font-bold mr-4 rounded-sm">予約</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="relative bg-hero h-[100svh] flex items-center justify-center pt-16 md:pt-20">
+        <div class="text-center px-4 w-full max-w-4xl">
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 md:mb-6 tracking-tight leading-tight">
+                真の強さは、<br class="md:hidden">暗闇の中で研ぎ澄まされる
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl text-gray-400 mb-8 md:mb-10 tracking-widest">
+                目黒の完全個室・専属トレーナーによる究極のボディメイク
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 px-4">
+                <a href="#contact" class="w-full sm:w-auto bg-primary text-black px-8 py-4 text-base md:text-lg font-bold tracking-wider hover:bg-yellow-600 transition-colors rounded-sm text-center">
+                    無料カウンセリングに申し込む
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- コンセプト -->
+    <section id="concept" class="py-16 md:py-24 bg-dark">
+        <div class="max-w-4xl mx-auto px-4 md:px-8 text-center">
+            <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 tracking-widest">CONCEPT</h2>
+            <div class="w-12 h-1 bg-primary mx-auto mb-8 md:mb-12"></div>
+            <p class="text-sm md:text-base text-gray-300 leading-loose md:leading-relaxed text-left md:text-center">
+                当ジムは、周囲の目を一切気にすることなく、自分自身の身体と精神に深く向き合うための特別なプライベート空間を提供します。<br class="hidden md:block">
+                最新の科学的知見に基づいたトレーニングメソッドと、厳格な食事管理指導により、お客様一人ひとりが設定した目標の達成を最短距離でサポートします。
+            </p>
+        </div>
+    </section>
+
+    <!-- 特徴 -->
+    <section id="features" class="py-16 md:py-24 bg-darker">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 text-center tracking-widest">FEATURES</h2>
+            <div class="w-12 h-1 bg-primary mx-auto mb-10 md:mb-16"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <!-- 特徴1 -->
+                <article class="relative bg-cover bg-center p-4 sm:p-6 md:p-8 min-h-[300px] flex flex-col justify-end" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop');">
+                    <div class="absolute inset-0 bg-black/70"></div>
+                    <div class="relative z-10 bg-white/5 backdrop-blur-md p-6 border border-gray-600/30">
+                        <h3 class="text-lg md:text-xl font-bold text-white mb-3">
+                            <span class="text-primary mr-1">01.</span> 完全プライベート空間
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            他のお客様と顔を合わせることのない完全個室設計。マシンの順番待ちや周囲の視線を気にせず、トレーニングのみに集中できる環境を構築しています。
+                        </p>
+                    </div>
+                </article>
+
+                <!-- 特徴2 -->
+                <article class="relative bg-cover bg-center p-4 sm:p-6 md:p-8 min-h-[300px] flex flex-col justify-end" style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=800&auto=format&fit=crop');">
+                    <div class="absolute inset-0 bg-black/70"></div>
+                    <div class="relative z-10 bg-white/5 backdrop-blur-md p-6 border border-gray-600/30">
+                        <h3 class="text-lg md:text-xl font-bold text-white mb-3">
+                            <span class="text-primary mr-1">02.</span> 科学的アプローチ
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            最新の生体力学と栄養学に基づき、骨格や体質に合わせたオーダーメイドのプログラムを作成。非効率なトレーニングを排除し、確実な結果を追求します。
+                        </p>
+                    </div>
+                </article>
+
+                <!-- 特徴3 -->
+                <article class="relative bg-cover bg-center p-4 sm:p-6 md:p-8 min-h-[300px] flex flex-col justify-end" style="background-image: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800&auto=format&fit=crop');">
+                    <div class="absolute inset-0 bg-black/70"></div>
+                    <div class="relative z-10 bg-white/5 backdrop-blur-md p-6 border border-gray-600/30">
+                        <h3 class="text-lg md:text-xl font-bold text-white mb-3">
+                            <span class="text-primary mr-1">03.</span> 最新鋭のマシン完備
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            世界基準の高品質なトレーニング機器を各個室に専用配置。初心者から上級者まで、目的の筋肉へ的確なアプローチが可能な設備を整えています。
+                        </p>
+                    </div>
+                </article>
+
+                <!-- 特徴4 -->
+                <article class="relative bg-cover bg-center p-4 sm:p-6 md:p-8 min-h-[300px] flex flex-col justify-end" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800&auto=format&fit=crop');">
+                    <div class="absolute inset-0 bg-black/70"></div>
+                    <div class="relative z-10 bg-white/5 backdrop-blur-md p-6 border border-gray-600/30">
+                        <h3 class="text-lg md:text-xl font-bold text-white mb-3">
+                            <span class="text-primary mr-1">04.</span> 手ぶらで通える利便性
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            ウェア、シューズ、タオルの無料レンタルに加え、トレーニング後のプロテインやアメニティも完備。仕事帰りでも準備不要でご来店いただけます。
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 実績（BEFORE/AFTER） -->
+    <section id="results" class="py-16 md:py-24 bg-dark">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 text-center tracking-widest">RESULTS</h2>
+            <div class="w-12 h-1 bg-primary mx-auto mb-10 md:mb-16"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 実績1 -->
+                <div class="bg-panel border border-gray-800 p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-white">30代 男性 / 3ヶ月コース</h3>
+                        <span class="bg-primary text-black text-xs font-bold px-2 py-1">-8.5kg達成</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-4">
+                        <div class="bg-gray-800 aspect-[3/4] flex items-center justify-center text-sm text-gray-500">BEFORE画像</div>
+                        <div class="bg-gray-700 aspect-[3/4] flex items-center justify-center text-sm text-gray-400">AFTER画像</div>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        「自己流のダイエットでは限界を感じて入会しました。的確なフォーム指導と食事管理のおかげで、筋肉を落とさずに体脂肪だけを絞ることができました。」
+                    </p>
+                </div>
+                <!-- 実績2 -->
+                <div class="bg-panel border border-gray-800 p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-white">20代 女性 / 2ヶ月コース</h3>
+                        <span class="bg-primary text-black text-xs font-bold px-2 py-1">-5.2kg達成</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-4">
+                        <div class="bg-gray-800 aspect-[3/4] flex items-center justify-center text-sm text-gray-500">BEFORE画像</div>
+                        <div class="bg-gray-700 aspect-[3/4] flex items-center justify-center text-sm text-gray-400">AFTER画像</div>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        「筋トレ経験ゼロからのスタートでしたが、トレーナーの阿部さんが丁寧に教えてくれたので安心でした。姿勢も改善され、周りからも痩せたと驚かれます。」
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料金プラン -->
+    <section id="pricing" class="py-16 md:py-24 bg-darker">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 text-center tracking-widest">PRICING</h2>
+            <div class="w-12 h-1 bg-primary mx-auto mb-10 md:mb-16"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- プラン1 -->
+                <div class="bg-panel border border-gray-800 p-6 md:p-8 flex flex-col">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-2">2ヶ月集中ボディメイク</h3>
+                    <p class="text-gray-400 text-xs md:text-sm mb-6">短期間で劇的な変化を求める方向けの標準プラン。</p>
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-8">
+                        ¥298,000<span class="text-base md:text-lg text-gray-500 font-normal"> (税込)</span>
+                    </div>
+                    <ul class="text-gray-300 text-sm space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2 mt-0.5">✓</span> <span>パーソナルトレーニング 全16回（1回60分）</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2 mt-0.5">✓</span> <span>毎日のオンライン食事指導</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2 mt-0.5">✓</span> <span>ウェア・シューズ無料レンタル</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2 mt-0.5">✓</span> <span>プロテイン提供（毎セッション後）</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- プラン2 -->
+                <div class="bg-panel border border-primary p-6 md:p-8 flex flex-col relative transform lg:-translate-y-4 shadow-2xl">
+                    <div class="absolute top-0 right-0 bg-primary text-black text-xs font-bold px-4 py-1.5">
+                        RECOMMEND
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-2 mt-2">3ヶ月徹底改造プログラム</h3>
+                    <p class="text-gray-400 text-xs md:text-sm mb-6">習慣化とリバウンド防止に重きを置いた推奨プラン。</p>
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-8">
+                        ¥418,000<span class="text-base md:text-lg text-gray-500 font-normal"> (税込)</span>
+                    </div>
+                    <ul class="text-gray-300 text-sm space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2 mt-0.5">✓</span> <span>パーソナルトレーニング 全24回（1回60分）</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2 mt-0.5">✓</span> <span>毎日のオンライン食事指導</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2 mt-0.5">✓</span> <span>ウェア・シューズ無料レンタル</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2 mt-0.5">✓</span> <span>プロテイン・サプリメント提供</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-8 text-gray-500 text-xs md:text-sm">
+                ※別途入会金 ¥33,000（税込）が必要です。
+            </div>
+        </div>
+    </section>
+
+    <!-- トレーナー -->
+    <section id="trainer" class="py-16 md:py-24 bg-dark">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 text-center tracking-widest">TRAINER</h2>
+            <div class="w-12 h-1 bg-primary mx-auto mb-10 md:mb-16"></div>
+
+            <article class="flex flex-col md:flex-row items-center bg-panel border border-gray-800">
+                <div class="w-full md:w-1/2 min-h-[300px] md:h-auto">
+                    <img src="eylg_face01.jpg" alt="パーソナルトレーナー 阿部" class="w-full h-full object-cover grayscale opacity-90">
+                </div>
+                <div class="w-full md:w-1/2 p-6 sm:p-8 md:p-12">
+                    <div class="text-primary text-xs md:text-sm font-bold tracking-widest mb-2">CHIEF TRAINER</div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-6">阿部 <span class="text-sm font-normal text-gray-400 ml-2">Abe</span></h3>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                        大手パーソナルジムにてトップトレーナーとして活動後、EYLGを設立。<br>
+                        年間1,000セッション以上の指導実績を持ち、ダイエットから筋力アップまで幅広い目的に対応。<br>
+                        解剖学と生理学に基づいた「怪我をさせない、確実に効かせる」トレーニング指導に定評がある。
+                    </p>
+                    <div class="text-xs md:text-sm text-gray-400">
+                        <p class="font-bold text-gray-300 mb-1">保有資格：</p>
+                        <ul class="list-disc list-inside space-y-1 pl-1">
+                            <li>NSCA-CPT（全米ストレングス&コンディショニング協会認定）</li>
+                            <li>NESTA-PFT</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- FAQ (よくある質問) -->
+    <section id="faq" class="py-16 md:py-24 bg-darker">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 text-center tracking-widest">FAQ</h2>
+            <div class="w-12 h-1 bg-primary mx-auto mb-10 md:mb-16"></div>
+
+            <div class="space-y-4">
+                <details class="group bg-panel border border-gray-800 p-4 md:p-6 open:border-primary transition-colors cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-white text-sm md:text-base">
+                        <span class="flex items-start"><span class="text-primary mr-3">Q.</span> 運動経験が全くないのですが大丈夫でしょうか？</span>
+                        <span class="text-primary group-open:rotate-45 transition-transform text-xl">+</span>
+                    </summary>
+                    <div class="mt-4 pt-4 border-t border-gray-800 text-gray-400 text-sm leading-relaxed">
+                        <span class="text-gray-500 mr-2">A.</span>
+                        全く問題ありません。当ジムのお客様の多くは運動初心者からスタートされています。お客様の現在の体力や骨格に合わせた完全オーダーメイドのプログラムを作成し、怪我のないよう丁寧に指導いたします。
+                    </div>
+                </details>
+                <details class="group bg-panel border border-gray-800 p-4 md:p-6 open:border-primary transition-colors cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-white text-sm md:text-base">
+                        <span class="flex items-start"><span class="text-primary mr-3">Q.</span> 食事制限は厳しいですか？お酒は飲めませんか？</span>
+                        <span class="text-primary group-open:rotate-45 transition-transform text-xl">+</span>
+                    </summary>
+                    <div class="mt-4 pt-4 border-t border-gray-800 text-gray-400 text-sm leading-relaxed">
+                        <span class="text-gray-500 mr-2">A.</span>
+                        極端な糖質制限など、リバウンドのリスクが高い指導は行いません。「食べて痩せる」を基本に、ライフスタイルに合わせた無理のない食事改善を提案します。お酒についても、種類や量を調整することで楽しんでいただけます。
+                    </div>
+                </details>
+                <details class="group bg-panel border border-gray-800 p-4 md:p-6 open:border-primary transition-colors cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-white text-sm md:text-base">
+                        <span class="flex items-start"><span class="text-primary mr-3">Q.</span> 持ち物は何が必要ですか？</span>
+                        <span class="text-primary group-open:rotate-45 transition-transform text-xl">+</span>
+                    </summary>
+                    <div class="mt-4 pt-4 border-t border-gray-800 text-gray-400 text-sm leading-relaxed">
+                        <span class="text-gray-500 mr-2">A.</span>
+                        トレーニングウェア、シューズ、タオルは全て無料でレンタルしております。また、ミネラルウォーターやトレーニング後のプロテインも料金に含まれておりますので、手ぶらでお越しいただけます。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス -->
+    <section id="access" class="py-16 md:py-24 bg-dark">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 text-center tracking-widest">ACCESS</h2>
+            <div class="w-12 h-1 bg-primary mx-auto mb-10 md:mb-16"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-xl font-bold text-white mb-6">EYLG</h3>
+                    <table class="w-full text-sm text-gray-400 text-left">
+                        <tbody class="divide-y divide-gray-800">
+                            <tr>
+                                <th class="py-4 font-normal text-gray-300 w-24 align-top">住所</th>
+                                <td class="py-4 leading-relaxed">〒153-0000<br>東京都目黒区〇〇 1-2-3<br>〇〇ビル 4F</td>
+                            </tr>
+                            <tr>
+                                <th class="py-4 font-normal text-gray-300">営業時間</th>
+                                <td class="py-4">7:00 - 23:00（最終受付 21:30）</td>
+                            </tr>
+                            <tr>
+                                <th class="py-4 font-normal text-gray-300">定休日</th>
+                                <td class="py-4">不定休</td>
+                            </tr>
+                            <tr>
+                                <th class="py-4 font-normal text-gray-300 align-top">アクセス</th>
+                                <td class="py-4 leading-relaxed">JR山手線・東京メトロ南北線<br>「目黒駅」より徒歩5分</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="order-1 md:order-2 h-64 md:h-full bg-gray-800 w-full">
+                    <!-- Google Maps iframe プレースホルダー -->
+                    <div class="w-full h-full flex items-center justify-center text-gray-500 text-sm">
+                        [Google Map Area]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせ・予約 -->
+    <section id="contact" class="py-16 md:py-24 bg-darker border-t border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 tracking-widest">CONTACT & RESERVATION</h2>
+                <div class="w-12 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    まずは無料カウンセリングにて、現在のお悩みや目標をお聞かせください。<br class="hidden sm:block">
+                    無理な勧誘は一切行っておりませんのでご安心ください。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                <!-- LINE CTA -->
+                <div class="bg-panel border border-gray-800 p-6 sm:p-8 flex flex-col items-center justify-center text-center rounded-sm">
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-4">LINEで簡単予約・ご相談</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-8">
+                        友だち追加後、すぐにメッセージでご質問や<br class="hidden sm:block">無料カウンセリングの予約が可能です。<br>
+                    </p>
+                    <a href="#" class="w-full max-w-sm bg-line text-white font-bold py-4 text-sm sm:text-base tracking-wider hover:bg-green-600 transition-colors flex items-center justify-center rounded-sm shadow-lg shadow-green-900/20">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.122.303.079.759.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.304z"/>
+                        </svg>
+                        LINEで友だち追加する
+                    </a>
+                </div>
+
+                <!-- 問い合わせフォーム -->
+                <div class="bg-panel border border-gray-800 p-6 sm:p-8 rounded-sm">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-6 text-center border-b border-gray-700 pb-4">メールでのご予約・お問い合わせ</h3>
+                    <form class="space-y-5">
+                        <div>
+                            <label for="name" class="block text-xs sm:text-sm font-medium text-gray-300 mb-2">お名前 <span class="text-primary text-xs ml-1">必須</span></label>
+                            <input type="text" id="name" required class="w-full bg-darker border border-gray-700 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-primary" placeholder="山田 太郎">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-xs sm:text-sm font-medium text-gray-300 mb-2">メールアドレス <span class="text-primary text-xs ml-1">必須</span></label>
+                            <input type="email" id="email" required class="w-full bg-darker border border-gray-700 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-primary" placeholder="example@domain.com">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-xs sm:text-sm font-medium text-gray-300 mb-2">電話番号</label>
+                            <input type="tel" id="phone" class="w-full bg-darker border border-gray-700 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-primary" placeholder="090-0000-0000">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-xs sm:text-sm font-medium text-gray-300 mb-2">ご要望・ご質問</label>
+                            <textarea id="message" rows="4" class="w-full bg-darker border border-gray-700 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-primary" placeholder="無料カウンセリング希望日時（第3希望まで）などをご記入ください。"></textarea>
+                        </div>
+                        <div class="pt-2">
+                            <button type="submit" class="w-full bg-primary text-black font-bold py-4 text-sm sm:text-base tracking-wider hover:bg-yellow-600 transition-colors rounded-sm">
+                                入力内容を送信する
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-black py-8 border-t border-gray-900 text-center">
+        <div class="mb-4">
+            <a href="#" class="text-xl font-bold tracking-widest text-white">EY<span class="text-primary">LG</span></a>
+        </div>
+        <p class="text-gray-600 text-xs tracking-wider">
+            &copy; 2026 EYLG. All Rights Reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
