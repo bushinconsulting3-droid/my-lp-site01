@@ -21,9 +21,6 @@
                         darker: '#000000',
                         panel: '#1a1a1a',
                         line: '#06C755'
-                    },
-                    spacing: {
-                        '128': '32rem',
                     }
                 }
             }
@@ -43,20 +40,33 @@
         html {
             scroll-behavior: smooth;
         }
-        /* タップハイライトの無効化 */
         a, button {
             -webkit-tap-highlight-color: transparent;
         }
-        /* 文字の視認性向上 */
         .text-glow {
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
         }
-        /* スムーズなホバーアニメーション */
         .hover-lift {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .hover-lift:hover {
             transform: translateY(-5px);
+        }
+        /* モバイルメニュー用アニメーション */
+        #mobile-menu-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #mobile-menu-content {
+            transition: transform 0.3s ease;
+            transform: translateX(100%);
+        }
+        body.menu-open #mobile-menu-overlay {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        body.menu-open #mobile-menu-content {
+            transform: translateX(0);
         }
     </style>
 
@@ -86,10 +96,10 @@
     }
     </script>
 </head>
-<body class="bg-darker text-gray-300 antialiased leading-relaxed">
+<body class="bg-darker text-gray-300 antialiased leading-relaxed overflow-x-hidden">
 
-    <!-- ヘッダー：UI/UX 視認性と操作性 -->
-    <header class="fixed w-full z-50 bg-black/95 backdrop-blur-md border-b border-gray-900">
+    <!-- ヘッダー：UI/UX 強化版 -->
+    <header class="fixed w-full z-50 bg-black/95 backdrop-blur-md border-b border-gray-900 font-bold">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 md:h-20">
                 <div class="flex-shrink-0">
@@ -97,411 +107,417 @@
                         EY<span class="text-primary">LG</span>
                     </a>
                 </div>
+                
+                <!-- デスクトップナビゲーション -->
                 <nav class="hidden lg:flex space-x-10">
-                    <a href="#concept" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-primary transition-colors uppercase">Concept</a>
-                    <a href="#promises" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-primary transition-colors uppercase">Promises</a>
-                    <a href="#features" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-primary transition-colors uppercase">Features</a>
-                    <a href="#results" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-primary transition-colors uppercase">Results</a>
-                    <a href="#pricing" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-primary transition-colors uppercase">Pricing</a>
-                    <a href="#trainer" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-primary transition-colors uppercase">Trainer</a>
+                    <a href="#concept" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase">Concept</a>
+                    <a href="#promises" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase">Promises</a>
+                    <a href="#features" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase">Features</a>
+                    <a href="#results" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase">Results</a>
+                    <a href="#pricing" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase">Pricing</a>
+                    <a href="#trainer" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase">Trainer</a>
                 </nav>
-                <div class="hidden md:block">
-                    <a href="#contact" class="bg-primary text-black px-6 py-2.5 text-xs font-bold tracking-widest hover:bg-yellow-600 transition-all rounded-sm shadow-lg shadow-yellow-900/20">
-                        体験予約はこちら
-                    </a>
-                </div>
-                <!-- モバイルメニュー：簡易表示 -->
-                <div class="lg:hidden">
-                    <a href="#contact" class="bg-primary text-black px-4 py-2 text-xs font-bold rounded-sm shadow-md">体験予約</a>
+
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:block">
+                        <a href="#contact" class="bg-primary text-black px-6 py-2.5 text-xs font-bold tracking-widest hover:bg-yellow-600 transition-all rounded-sm shadow-lg shadow-yellow-900/20">
+                            無料カウンセリング
+                        </a>
+                    </div>
+                    
+                    <!-- ハンバーガーメニューボタン -->
+                    <button id="menu-btn" class="lg:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none z-[70]" aria-label="メニューを開く">
+                        <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+                        <span class="w-6 h-0.5 bg-white transition-all duration-300 opacity-100"></span>
+                        <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+                    </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- ヒーローセクション：SEO H1タグと視覚的インパクト -->
-    <main>
-    <section class="relative bg-hero h-[100svh] flex items-center justify-center overflow-hidden">
-        <div class="text-center px-4 w-full max-w-5xl z-10">
-            <p class="text-primary text-xs md:text-sm font-bold tracking-[0.5em] mb-6 animate-pulse uppercase">Nakameguro / Daikanyama Private Gym</p>
-            <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight leading-[1.1] text-glow">
-                身体が変われば、<br>人生の景色が変わる
-            </h1>
-            <p class="text-base sm:text-lg md:text-xl text-gray-200 mb-12 tracking-widest leading-loose font-light max-w-3xl mx-auto">
-                QOL爆上がりトレーニングサロン『EYLG』<br>
-                中目黒・代官山エリアの完全個室没入空間
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-6 px-4">
-                <a href="#contact" class="w-full sm:w-auto bg-primary text-black px-12 py-5 text-base md:text-lg font-bold tracking-widest hover:bg-yellow-600 transition-all rounded-sm text-center shadow-2xl shadow-yellow-900/40 transform hover:scale-105">
-                    無料体験予約を開始
-                </a>
-                <a href="https://lin.ee/lYptjpN" class="w-full sm:w-auto border border-white/30 backdrop-blur-sm text-white px-12 py-5 text-base md:text-lg font-bold tracking-widest hover:bg-white hover:text-black transition-all rounded-sm text-center">
-                    LINEで気軽に相談
-                </a>
-            </div>
-        </div>
-        <!-- 装飾的なグラデーション -->
-        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-darker to-transparent"></div>
-    </section>
-
-    <!-- コンセプト：物語性とキーワード -->
-    <section id="concept" class="py-24 md:py-40 bg-dark relative">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">The Concept</h2>
-            <div class="w-16 h-px bg-primary mx-auto mb-14 opacity-50"></div>
+    <!-- モバイルメニューオーバーレイ -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] bg-black/90 backdrop-blur-lg opacity-0 visibility-hidden pointer-events-none">
+        <div id="mobile-menu-content" class="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-dark p-12 flex flex-col shadow-2xl">
+            <nav class="flex flex-col space-y-8 mt-16 text-center">
+                <a href="#concept" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link">CONCEPT</a>
+                <a href="#promises" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link">4 PROMISES</a>
+                <a href="#features" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link">FEATURES</a>
+                <a href="#results" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link">RESULTS</a>
+                <a href="#pricing" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link">PRICING</a>
+                <a href="#trainer" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link">TRAINER</a>
+                <a href="#access" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link">ACCESS</a>
+            </nav>
             
-            <h3 class="text-2xl md:text-5xl font-bold text-white mb-12 tracking-widest leading-tight">Enrich Your Life GYM</h3>
-            <div class="text-left md:text-center space-y-10 text-gray-300 text-sm md:text-lg leading-loose font-light">
-                <p>
-                    EYLG（エイルグ）は、<span class="text-white font-bold">Enrich Your Life GYM</span> の頭文字。<br class="hidden md:block">
-                    「身体だけでなく、人生そのものを豊かに彩りたい」という想いを込めています。
-                </p>
-                <p>
-                    北欧神話の癒やしの女神「エイル」の名を冠し、<br class="hidden md:block">
-                    ハードな鍛錬と心身を深く整えるリトリート（隠れ家）を融合させました。
-                </p>
-                <p class="text-white font-bold text-xl md:text-2xl pt-4">
-                    中目黒・代官山の静寂なる没入空間で、<br class="hidden md:block">
-                    あなただけの美しさを再定義してください。
-                </p>
+            <div class="mt-auto space-y-4">
+                <a href="#contact" class="block w-full bg-primary text-black text-center py-5 font-bold tracking-widest rounded-sm menu-link shadow-lg">体験トレーニング予約</a>
+                <a href="https://lin.ee/lYptjpN" target="_blank" class="block w-full bg-line text-white text-center py-5 font-bold tracking-widest rounded-sm shadow-lg shadow-green-900/10 flex items-center justify-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.122.303.079.759.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.304z"/></svg>
+                    LINEで相談する
+                </a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- 4つの約束：UI/UX 特徴の整理 -->
-    <section id="promises" class="py-24 md:py-40 bg-darker overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 md:mb-32">
+    <!-- メインコンテンツ -->
+    <main>
+        <!-- ヒーローセクション：SEO H1タグと視覚的インパクト -->
+        <section class="relative bg-hero h-[100svh] flex items-center justify-center overflow-hidden">
+            <div class="text-center px-4 w-full max-w-5xl z-10">
+                <p class="text-primary text-xs md:text-sm font-bold tracking-[0.5em] mb-6 animate-pulse uppercase">中目黒・代官山 完全個室パーソナルジム</p>
+                <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight leading-[1.1] text-glow">
+                    身体が変われば、<br>人生の景色が変わる
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl text-gray-200 mb-12 tracking-widest leading-loose font-light">
+                    QOL爆上がりトレーニングサロン『EYLG（エイルグ）』
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6 px-4">
+                    <a href="#contact" class="w-full sm:w-auto bg-primary text-black px-12 py-5 text-base md:text-lg font-bold tracking-widest hover:bg-yellow-600 transition-all rounded-sm text-center shadow-2xl shadow-yellow-900/40 transform hover:scale-105">
+                        無料体験予約を開始
+                    </a>
+                    <a href="https://lin.ee/lYptjpN" target="_blank" class="w-full sm:w-auto border border-white/30 backdrop-blur-sm text-white px-12 py-5 text-base md:text-lg font-bold tracking-widest hover:bg-white hover:text-black transition-all rounded-sm text-center">
+                        LINEで気軽に相談
+                    </a>
+                </div>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-darker to-transparent"></div>
+        </section>
+
+        <!-- コンセプト -->
+        <section id="concept" class="py-24 md:py-40 bg-dark relative">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">The Concept</h2>
+                <div class="w-16 h-px bg-primary mx-auto mb-14 opacity-50"></div>
+                
+                <h3 class="text-2xl md:text-5xl font-bold text-white mb-12 tracking-widest leading-tight">Enrich Your Life GYM</h3>
+                <div class="text-left md:text-center space-y-10 text-gray-300 text-sm md:text-lg leading-loose font-light">
+                    <p>
+                        EYLG（エイルグ）は、<span class="text-white font-bold tracking-widest">Enrich Your Life GYM</span> の頭文字。<br class="hidden md:block">
+                        「身体だけでなく、人生そのものを豊かに彩りたい」という強い想いから誕生しました。
+                    </p>
+                    <p>
+                        北欧神話において「癒やし」を司る女神エイルの名を冠したこの場所は、<br class="hidden md:block">
+                        ハードな鍛錬と、心身を深く整えるリトリートを融合させた大人のための隠れ家です。
+                    </p>
+                    <p class="text-white font-bold text-xl md:text-2xl pt-4">
+                        中目黒・代官山の静寂なる没入空間で、<br class="hidden md:block">
+                        あなただけの美しさを再定義してください。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4つの約束 -->
+        <section id="promises" class="py-24 md:py-40 bg-darker">
+            <div class="max-w-7xl mx-auto px-6 text-center">
                 <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">Our Promises</h2>
                 <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
-                <p class="text-white text-2xl md:text-4xl font-bold tracking-widest">EYLGが提供する4つの価値</p>
-            </div>
+                <p class="text-white text-2xl md:text-4xl font-bold tracking-widest mb-20 md:mb-32">EYLGが提供する4つの価値</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <!-- Energy -->
-                <article class="bg-panel border border-gray-800 p-12 text-center hover-lift rounded-sm group border-b-2 border-b-transparent hover:border-b-primary">
-                    <div class="text-primary text-5xl font-serif mb-8 italic opacity-50 group-hover:opacity-100 transition-opacity">Energy</div>
-                    <h4 class="text-white font-bold mb-6 text-xl tracking-widest">エネルギー</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed text-left">
-                        日々のパフォーマンスを最大化。仕事も趣味も全力で楽しめる、持続的な「動ける体」を手に入れます。
-                    </p>
-                </article>
-                <!-- Youthful -->
-                <article class="bg-panel border border-gray-800 p-12 text-center hover-lift rounded-sm group border-b-2 border-b-transparent hover:border-b-primary">
-                    <div class="text-primary text-5xl font-serif mb-8 italic opacity-50 group-hover:opacity-100 transition-opacity">Youthful</div>
-                    <h4 class="text-white font-bold mb-6 text-xl tracking-widest">ユースフル</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed text-left">
-                        年齢を言い訳にしない身体。科学的アプローチで外見の美しさとマインドの若々しさを維持します。
-                    </p>
-                </article>
-                <!-- Luxury -->
-                <article class="bg-panel border border-gray-800 p-12 text-center hover-lift rounded-sm group border-b-2 border-b-transparent hover:border-b-primary">
-                    <div class="text-primary text-5xl font-serif mb-8 italic opacity-50 group-hover:opacity-100 transition-opacity">Luxury</div>
-                    <h4 class="text-white font-bold mb-6 text-xl tracking-widest">ラグジュアリー</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed text-left">
-                        洗練された音響と照明、贅沢なストレッチ。日常の緊張を解放する、至福のメンテナンスを提供。
-                    </p>
-                </article>
-                <!-- Glow -->
-                <article class="bg-panel border border-gray-800 p-12 text-center hover-lift rounded-sm group border-b-2 border-b-transparent hover:border-b-primary">
-                    <div class="text-primary text-5xl font-serif mb-8 italic opacity-50 group-hover:opacity-100 transition-opacity">Glow</div>
-                    <h4 class="text-white font-bold mb-6 text-xl tracking-widest">グロウ</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed text-left">
-                        内側から光り輝く自分へ。圧倒的な達成感と自信が、あなたの日常を明るく照らし出します。
-                    </p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- 特徴：UI 交互レイアウトでの視覚効果 -->
-    <section id="features" class="py-24 md:py-40 bg-dark">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-24 md:mb-32">
-                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">Features</h2>
-                <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
-                <p class="text-white text-2xl md:text-4xl font-bold tracking-widest">非日常。感覚を研ぎ澄ます設計</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center mb-32">
-                <div class="order-2 md:order-1">
-                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-8 tracking-widest leading-tight">暗闇×音楽の<br>感覚遮断トレーニング</h3>
-                    <p class="text-gray-300 leading-loose mb-10 font-light text-sm md:text-base">
-                        視覚を制限する「暗闇」と、気分を高揚させる「ハイエンド音響」の融合。周囲の視線を気にせず、筋肉の動きだけに全神経を集中させることで、通常のパーソナルジムを遥かに凌駕する効率と圧倒的な没入感を実現します。
-                    </p>
-                    <ul class="space-y-5">
-                        <li class="flex items-center text-sm text-gray-400"><svg class="w-5 h-5 text-primary mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 集中力を最大化するライティング演出</li>
-                        <li class="flex items-center text-sm text-gray-400"><svg class="w-5 h-5 text-primary mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 低音が響き渡るクラブミュージック環境</li>
-                        <li class="flex items-center text-sm text-gray-400"><svg class="w-5 h-5 text-primary mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> プライバシーを完守する完全個室設計</li>
-                    </ul>
-                </div>
-                <div class="order-1 md:order-2 bg-panel aspect-video overflow-hidden border border-gray-800 shadow-2xl rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200" alt="中目黒の完全個室で行う暗闇パーソナルトレーニング" class="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 transition-all duration-700 transform hover:scale-105" loading="lazy">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
+                    <article class="bg-panel border border-gray-800 p-12 hover-lift rounded-sm group border-b-2 border-b-transparent hover:border-b-primary transition-all duration-500">
+                        <div class="text-primary text-5xl font-serif mb-8 italic opacity-50 group-hover:opacity-100 transition-opacity">Energy</div>
+                        <h4 class="text-white font-bold mb-6 text-xl tracking-widest uppercase">エネルギー</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">日々のパフォーマンスを最大化。仕事も趣味も全力で楽しめる、疲れにくい「動ける体」を手に入れます。</p>
+                    </article>
+                    <article class="bg-panel border border-gray-800 p-12 hover-lift rounded-sm group border-b-2 border-b-transparent hover:border-b-primary transition-all duration-500">
+                        <div class="text-primary text-5xl font-serif mb-8 italic opacity-50 group-hover:opacity-100 transition-opacity">Youthful</div>
+                        <h4 class="text-white font-bold mb-6 text-xl tracking-widest uppercase">ユースフル</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">科学的なアプローチで外見の美しさを磨き、マインドの若々しさを維持。年齢を言い訳にしない人生へ。</p>
+                    </article>
+                    <article class="bg-panel border border-gray-800 p-12 hover-lift rounded-sm group border-b-2 border-b-transparent hover:border-b-primary transition-all duration-500">
+                        <div class="text-primary text-5xl font-serif mb-8 italic opacity-50 group-hover:opacity-100 transition-opacity">Luxury</div>
+                        <h4 class="text-white font-bold mb-6 text-xl tracking-widest uppercase">ラグジュアリー</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">洗練された音響と照明、贅沢なストレッチ。日常の緊張を解放する、至福のメンテナンスを提供します。</p>
+                    </article>
+                    <article class="bg-panel border border-gray-800 p-12 hover-lift rounded-sm group border-b-2 border-b-transparent hover:border-b-primary transition-all duration-500">
+                        <div class="text-primary text-5xl font-serif mb-8 italic opacity-50 group-hover:opacity-100 transition-opacity">Glow</div>
+                        <h4 class="text-white font-bold mb-6 text-xl tracking-widest uppercase">グロウ</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">セッション後、内側から光り輝く自分へ。圧倒的な達成感と自信が、あなたの日常を明るく照らし出します。</p>
+                    </article>
                 </div>
             </div>
+        </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
-                <div class="bg-panel aspect-video overflow-hidden border border-gray-800 shadow-2xl rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1544033527-b192daee1f5b?q=80&w=1200" alt="トレーニング後のリカバリーコンディショニング" class="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 transition-all duration-700 transform hover:scale-105" loading="lazy">
+        <!-- 特徴：SEOおよびUI/UXの最大化 -->
+        <section id="features" class="py-24 md:py-40 bg-dark">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-24 md:mb-32">
+                    <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">Features</h2>
+                    <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
+                    <p class="text-white text-2xl md:text-4xl font-bold tracking-widest">没入体験。五感を研ぎ澄ます設計</p>
                 </div>
-                <div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-8 tracking-widest leading-tight">鍛えるだけではない<br>「身体の再定義」</h3>
-                    <p class="text-gray-300 leading-loose mb-10 font-light text-sm md:text-base">
-                        追い込むだけのトレーニングは卒業。Luxuryな「ストレッチ」と「コンディショニング」を融合させ、日常のストレスや不良姿勢を根本からリセット。しなやかで機能的な「美しく動ける身体」を、プロの技術で構築します。
-                    </p>
-                    <ul class="space-y-5">
-                        <li class="flex items-center text-sm text-gray-400"><svg class="w-5 h-5 text-primary mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 肩こり・腰痛の根本改善アプローチ</li>
-                        <li class="flex items-center text-sm text-gray-400"><svg class="w-5 h-5 text-primary mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 骨格・体質に合わせたオーダーメイドメニュー</li>
-                        <li class="flex items-center text-sm text-gray-400"><svg class="w-5 h-5 text-primary mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 睡眠の質を高める独自のリカバリー法</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 実績：信頼醸成 -->
-    <section id="results" class="py-24 md:py-40 bg-darker">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 md:mb-32">
-                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">Results</h2>
-                <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
-                <p class="text-white text-2xl md:text-4xl font-bold tracking-widest">変化を証明する、お客様の実績</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-                <!-- 実績1 -->
-                <article class="bg-panel border border-gray-800 p-10 rounded-sm hover:border-gray-700 transition-all">
-                    <div class="flex justify-between items-center mb-8 border-b border-gray-800 pb-6">
-                        <div>
-                            <h3 class="text-xl font-bold text-white mb-1 tracking-widest">30代 男性 / 3ヶ月コース</h3>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest">Total Change Program</p>
-                        </div>
-                        <div class="text-right">
-                            <span class="text-primary text-3xl font-bold">-8.5<span class="text-xs ml-1">kg</span></span>
-                        </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center mb-32">
+                    <div class="order-2 md:order-1">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-8 tracking-widest leading-tight">暗闇×音楽の<br>感覚遮断トレーニング</h3>
+                        <p class="text-gray-300 leading-loose mb-10 font-light text-sm md:text-base">
+                            視覚を制限する「暗闇」と、高揚感を煽る「ハイエンド音響」の融合。周囲の視線を気にせず、筋肉の動きだけに全神経を集中させることで、通常のパーソナルジムを遥かに凌駕する効率と圧倒的な没入感を実現します。
+                        </p>
+                        <ul class="space-y-6">
+                            <li class="flex items-center text-sm text-gray-400 hover:text-white transition-colors group"><svg class="w-5 h-5 text-primary mr-5 transform group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 集中力を最大化するライティング演出</li>
+                            <li class="flex items-center text-sm text-gray-400 hover:text-white transition-colors group"><svg class="w-5 h-5 text-primary mr-5 transform group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 低音が響き渡るハイエンドな音響環境</li>
+                            <li class="flex items-center text-sm text-gray-400 hover:text-white transition-colors group"><svg class="w-5 h-5 text-primary mr-5 transform group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> プライバシーを完守する完全個室動線</li>
+                        </ul>
                     </div>
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="aspect-[3/4] bg-gray-900 flex items-center justify-center border border-gray-800 relative group overflow-hidden">
-                            <span class="text-[10px] text-gray-600 font-bold tracking-widest uppercase">Before</span>
-                        </div>
-                        <div class="aspect-[3/4] bg-gray-800 flex items-center justify-center border border-gray-700 relative group overflow-hidden">
-                            <span class="text-[10px] text-gray-400 font-bold tracking-widest uppercase">After</span>
-                        </div>
+                    <div class="order-1 md:order-2 bg-panel aspect-video overflow-hidden border border-gray-800 shadow-2xl rounded-sm group relative">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200" alt="中目黒の完全個室パーソナルジムEYLGでの暗闇トレーニングの様子" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105" loading="lazy">
+                        <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </div>
-                    <blockquote class="text-sm text-gray-300 leading-loose italic">
-                        「中目黒のプライベート空間と、阿部さんの論理的な指導に救われました。暗闇環境は集中力が高まり、仕事のストレス発散にも最適でした。」
-                    </blockquote>
-                </article>
-                <!-- 実績2 -->
-                <article class="bg-panel border border-gray-800 p-10 rounded-sm hover:border-gray-700 transition-all">
-                    <div class="flex justify-between items-center mb-8 border-b border-gray-800 pb-6">
-                        <div>
-                            <h3 class="text-xl font-bold text-white mb-1 tracking-widest">20代 女性 / 2ヶ月コース</h3>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest">Shape Up Program</p>
-                        </div>
-                        <div class="text-right">
-                            <span class="text-primary text-3xl font-bold">-5.2<span class="text-xs ml-1">kg</span></span>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="aspect-[3/4] bg-gray-900 flex items-center justify-center border border-gray-800 relative group overflow-hidden">
-                            <span class="text-[10px] text-gray-600 font-bold tracking-widest uppercase">Before</span>
-                        </div>
-                        <div class="aspect-[3/4] bg-gray-800 flex items-center justify-center border border-gray-700 relative group overflow-hidden">
-                            <span class="text-[10px] text-gray-400 font-bold tracking-widest uppercase">After</span>
-                        </div>
-                    </div>
-                    <blockquote class="text-sm text-gray-300 leading-loose italic">
-                        「トレーニングだけでなく姿勢が劇的に良くなりました。最後のストレッチが本当に贅沢。誰にも会わずに通えるのが大きな安心材料です。」
-                    </blockquote>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- 料金：コンバージョン直前のUI -->
-    <section id="pricing" class="py-24 md:py-40 bg-dark">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">Pricing</h2>
-            <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
-            <p class="text-white text-2xl md:text-4xl font-bold tracking-widest mb-20">投資に見合う、人生のアップグレード</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left max-w-5xl mx-auto">
-                <!-- 2ヶ月プラン -->
-                <div class="bg-panel border border-gray-800 p-12 flex flex-col hover-lift relative overflow-hidden group">
-                    <h3 class="text-2xl font-bold text-white mb-2 tracking-widest">2ヶ月集中ボディメイク</h3>
-                    <p class="text-gray-500 text-[10px] mb-10 tracking-[0.2em] uppercase">Standard Transformation</p>
-                    <div class="text-5xl font-bold text-primary mb-12 tracking-tighter">
-                        ¥298,000<span class="text-xs text-gray-500 font-normal ml-2 uppercase">incl. tax</span>
-                    </div>
-                    <ul class="text-gray-300 text-sm space-y-6 mb-12 flex-grow font-light">
-                        <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> パーソナルトレーニング全16回（60分）</li>
-                        <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> 毎日の食事・生活習慣サポート</li>
-                        <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> ウェア・タオル・アメニティ無料</li>
-                        <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> 水・プロテイン・サプリ無料提供</li>
-                    </ul>
-                    <a href="#contact" class="block w-full bg-transparent border border-primary text-primary text-center py-5 text-sm font-bold tracking-widest group-hover:bg-primary group-hover:text-black transition-all">体験予約へ進む</a>
                 </div>
 
-                <!-- 3ヶ月プラン（推奨） -->
-                <div class="bg-panel border border-primary p-12 flex flex-col relative shadow-2xl shadow-yellow-900/20 transform scale-105 z-10 rounded-sm">
-                    <div class="absolute top-0 right-0 bg-primary text-black text-[10px] font-bold px-6 py-2 uppercase tracking-[0.2em]">Best Value</div>
-                    <h3 class="text-2xl font-bold text-white mb-2 tracking-widest">3ヶ月徹底プログラム</h3>
-                    <p class="text-gray-500 text-[10px] mb-10 tracking-[0.2em] uppercase">Total Life Architecture</p>
-                    <div class="text-5xl font-bold text-primary mb-12 tracking-tighter">
-                        ¥418,000<span class="text-xs text-gray-500 font-normal ml-2 uppercase">incl. tax</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+                    <div class="bg-panel aspect-video overflow-hidden border border-gray-800 shadow-2xl rounded-sm group relative">
+                        <img src="https://images.unsplash.com/photo-1544033527-b192daee1f5b?q=80&w=1200" alt="トレーニング後のリカバリーコンディショニングとストレッチのイメージ" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105" loading="lazy">
+                        <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </div>
-                    <ul class="text-gray-300 text-sm space-y-6 mb-12 flex-grow font-light">
-                        <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> パーソナルトレーニング全24回（60分）</li>
-                        <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> 徹底した食事・習慣・睡眠管理サポート</li>
-                        <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> 姿勢診断・コンディショニング込</li>
-                        <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> 個別最適化したサプリメント付与</li>
-                    </ul>
-                    <a href="#contact" class="block w-full bg-primary text-black text-center py-5 text-sm font-bold tracking-widest hover:bg-yellow-600 transition-all rounded-sm shadow-xl shadow-yellow-900/30 transform active:scale-95">このプランで申し込む</a>
-                </div>
-            </div>
-            <p class="mt-20 text-gray-600 text-xs font-light">※別途入会金 ¥33,000(税込)が必要です。各回ミネラルウォーター・プロテイン込。</p>
-        </div>
-    </section>
-
-    <!-- トレーナー -->
-    <section id="trainer" class="py-24 md:py-40 bg-darker">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">The Trainer</h2>
-            <div class="w-16 h-px bg-primary mx-auto mb-16 opacity-50"></div>
-
-            <article class="flex flex-col md:flex-row items-center bg-panel border border-gray-800 overflow-hidden shadow-2xl text-left rounded-sm">
-                <div class="w-full md:w-1/2 aspect-square md:aspect-auto md:min-h-[550px] overflow-hidden relative">
-                    <img src="eylg_face01.jpg" alt="中目黒・代官山のパーソナルトレーナー 阿部" class="w-full h-full object-cover grayscale brightness-75 hover:scale-105 transition-transform duration-1000" loading="lazy">
-                </div>
-                <div class="w-full md:w-1/2 p-10 md:p-16">
-                    <div class="text-primary text-[10px] font-bold tracking-[0.3em] mb-4 uppercase">Chief Instructor</div>
-                    <h3 class="text-3xl font-bold text-white mb-8 tracking-wider">阿部 <span class="text-sm font-normal text-gray-500 ml-4 italic uppercase tracking-[0.2em]">ABE</span></h3>
-                    <p class="text-gray-400 text-sm md:text-base leading-loose mb-12 font-light">
-                        大手パーソナルジムにてトップトレーナーとして数千のセッションを執刀。身体の変化が心に、そして人生に与えるインパクトを誰よりも理解し、EYLGを設立。
-                        <br><br>
-                        解剖学に基づく身体操作指導に加え、高揚感を演出する空間設計に拘り、中目黒・代官山エリアの感度の高い顧客から、その専門性と確実な変化に高い評価を得ている。
-                    </p>
-                    <div class="border-t border-gray-800 pt-10">
-                        <p class="text-[10px] font-bold text-gray-500 mb-6 tracking-widest uppercase">Expertise & Qualifications</p>
-                        <ul class="text-[11px] text-gray-500 space-y-4 pl-1 font-light tracking-wide">
-                            <li class="flex items-start"><span class="text-primary mr-3 italic">●</span> NSCA-CPT（全米ストレングス&コンディショニング協会認定）</li>
-                            <li class="flex items-start"><span class="text-primary mr-3 italic">●</span> NESTA-PFT（全米エクササイズ&スポーツトレーナー協会認定）</li>
-                            <li class="list-disc ml-5">健康運動実践指導者 / 睡眠栄養改善アドバイザー</li>
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-8 tracking-widest leading-tight text-glow">鍛えるだけではない<br>「身体の再定義」</h3>
+                        <p class="text-gray-300 leading-loose mb-10 font-light text-sm md:text-base">
+                            追い込むだけのトレーニングは卒業。Luxuryな「ストレッチ」と「コンディショニング」を融合させ、日常のストレスや不良姿勢を根本からリセット。しなやかで機能的な「美しく動ける身体」を、プロフェッショナルの技術で再構築します。
+                        </p>
+                        <ul class="space-y-6">
+                            <li class="flex items-center text-sm text-gray-400 hover:text-white transition-colors group"><svg class="w-5 h-5 text-primary mr-5 transform group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 肩こり・腰痛の根本原因へのアプローチ</li>
+                            <li class="flex items-center text-sm text-gray-400 hover:text-white transition-colors group"><svg class="w-5 h-5 text-primary mr-5 transform group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 骨格・体質に合わせたオーダーメイドメニュー</li>
+                            <li class="flex items-center text-sm text-gray-400 hover:text-white transition-colors group"><svg class="w-5 h-5 text-primary mr-5 transform group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 睡眠の質を高める独自のリカバリー法</li>
                         </ul>
                     </div>
                 </div>
-            </article>
-        </div>
-    </section>
+            </div>
+        </section>
 
-    <!-- アクセス：SEO地域情報 -->
-    <section id="access" class="py-24 md:py-40 bg-dark border-b border-gray-900">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">Access</h2>
-            <div class="w-16 h-px bg-primary mx-auto mb-16 opacity-50"></div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 text-left max-w-5xl mx-auto">
-                <div>
-                    <h3 class="text-2xl font-bold text-white mb-10 tracking-widest">EYLG <span class="text-xs font-normal text-gray-500 ml-2 uppercase italic tracking-widest">Enrich Your Life GYM</span></h3>
-                    <table class="w-full text-sm text-gray-400 text-left border-collapse font-light">
-                        <tbody class="divide-y divide-gray-800">
-                            <tr>
-                                <th class="py-7 font-bold text-gray-300 w-32 align-top tracking-widest uppercase">Address</th>
-                                <td class="py-7 leading-loose">
-                                    〒153-0042<br>
-                                    東京都目黒区青葉台一丁目 〇〇-〇〇<br>
-                                    〇〇ビル 4F（完全個室・完全予約制）
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="py-7 font-bold text-gray-300 tracking-widest uppercase">Opening</th>
-                                <td class="py-7 tracking-widest font-bold text-white">07:00 - 23:00 <span class="text-[10px] font-normal text-gray-500 ml-2 italic tracking-normal">(最終受付 21:30)</span></td>
-                            </tr>
-                            <tr>
-                                <th class="py-7 font-bold text-gray-300 tracking-widest uppercase">Station</th>
-                                <td class="py-7 leading-loose">
-                                    東急東横線・日比谷線「<span class="text-white">中目黒駅</span>」徒歩5分<br>
-                                    東急東横線「<span class="text-white">代官山駅</span>」徒歩8分
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <!-- 実績：RESULTS（信頼醸成の最大化） -->
+        <section id="results" class="py-24 md:py-40 bg-darker">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">Results</h2>
+                <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
+                <p class="text-white text-2xl md:text-4xl font-bold tracking-widest mb-16 md:mb-24">変化を証明する、お客様の実績</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto text-left">
+                    <!-- 実績1 -->
+                    <article class="bg-panel border border-gray-800 p-10 rounded-sm hover:border-gray-700 transition-all shadow-xl">
+                        <div class="flex justify-between items-center mb-8 border-b border-gray-800 pb-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1 tracking-widest uppercase font-serif">A.K 様 (34)</h3>
+                                <p class="text-xs text-gray-500 uppercase tracking-widest">Total Transformation</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-primary text-3xl font-bold tracking-tighter">-8.5<span class="text-xs ml-1 font-normal">kg</span></span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="aspect-[3/4] bg-gray-900 flex items-center justify-center border border-gray-800 relative group overflow-hidden">
+                                <span class="text-[10px] text-gray-600 font-bold uppercase tracking-widest z-10">Before</span>
+                            </div>
+                            <div class="aspect-[3/4] bg-gray-800 flex items-center justify-center border border-gray-700 relative group overflow-hidden">
+                                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest z-10">After</span>
+                            </div>
+                        </div>
+                        <blockquote class="text-sm text-gray-300 leading-loose italic font-light">
+                            「中目黒のプライベート空間と、阿部さんの論理的な指導に救われました。暗闇環境は集中力が高まり、仕事のストレス発散にも最適でした。」
+                        </blockquote>
+                    </article>
+                    <!-- 実績2 -->
+                    <article class="bg-panel border border-gray-800 p-10 rounded-sm hover:border-gray-700 transition-all shadow-xl">
+                        <div class="flex justify-between items-center mb-8 border-b border-gray-800 pb-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1 tracking-widest uppercase font-serif">M.T 様 (28)</h3>
+                                <p class="text-xs text-gray-500 uppercase tracking-widest">Shape Up & Care</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-primary text-3xl font-bold tracking-tighter">-5.2<span class="text-xs ml-1 font-normal">kg</span></span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="aspect-[3/4] bg-gray-900 flex items-center justify-center border border-gray-800 relative group overflow-hidden">
+                                <span class="text-[10px] text-gray-600 font-bold uppercase tracking-widest z-10">Before</span>
+                            </div>
+                            <div class="aspect-[3/4] bg-gray-800 flex items-center justify-center border border-gray-700 relative group overflow-hidden">
+                                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest z-10">After</span>
+                            </div>
+                        </div>
+                        <blockquote class="text-sm text-gray-300 leading-loose italic font-light">
+                            「姿勢が劇的に改善しました。最後のストレッチが本当に贅沢な時間で、通うのが楽しみでした。誰にも会わずに通えるのが大きな安心材料です。」
+                        </blockquote>
+                    </article>
                 </div>
-                <div class="h-80 lg:h-full min-h-[400px] bg-panel border border-gray-800 flex items-center justify-center relative shadow-inner overflow-hidden rounded-sm">
-                    <!-- マップのイメージ。実運用時はGoogle Mapの埋め込み。グレースケールのフィルターを推奨。 -->
-                    <div class="absolute inset-0 bg-gray-900/50 flex items-center justify-center">
-                         <span class="text-gray-600 text-xs tracking-[0.3em] uppercase animate-pulse">Google Map Area</span>
+            </div>
+        </section>
+
+        <!-- 料金：コンバージョン直前のUI最適化 -->
+        <section id="pricing" class="py-24 md:py-40 bg-dark text-center">
+            <div class="max-w-5xl mx-auto px-6">
+                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">Pricing</h2>
+                <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
+                <p class="text-white text-2xl md:text-4xl font-bold tracking-widest mb-20 md:mb-32">投資に見合う、人生のアップグレード</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left max-w-5xl mx-auto items-start">
+                    <!-- 2ヶ月プラン -->
+                    <article class="bg-panel border border-gray-800 p-12 flex flex-col hover-lift relative overflow-hidden group">
+                        <h3 class="text-2xl font-bold text-white mb-2 tracking-widest uppercase">2ヶ月集中プラン</h3>
+                        <p class="text-gray-500 text-[10px] mb-10 tracking-[0.2em] uppercase font-bold">Standard Transformation</p>
+                        <div class="text-5xl font-bold text-primary mb-12 tracking-tighter">
+                            ¥298,000<span class="text-xs text-gray-500 font-normal ml-3 uppercase tracking-normal">incl. tax</span>
+                        </div>
+                        <ul class="text-gray-300 text-sm space-y-6 mb-16 flex-grow font-light">
+                            <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> パーソナルトレーニング全16回</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> 毎日のオンライン食事サポート</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> ウェア・タオル無料フルレンタル</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> 各回 水・プロテイン無料提供</li>
+                        </ul>
+                        <a href="#contact" class="block w-full border border-primary text-primary text-center py-5 text-sm font-bold tracking-[0.3em] uppercase group-hover:bg-primary group-hover:text-black transition-all shadow-xl">Select This Plan</a>
+                    </article>
+
+                    <!-- 3ヶ月プラン（推奨） -->
+                    <article class="bg-panel border border-primary p-12 flex flex-col relative shadow-2xl shadow-yellow-900/20 md:scale-105 z-10 rounded-sm group">
+                        <div class="absolute top-0 right-0 bg-primary text-black text-[10px] font-bold px-6 py-2 uppercase tracking-[0.2em]">Best Value</div>
+                        <h3 class="text-2xl font-bold text-white mb-2 tracking-widest uppercase">3ヶ月徹底プログラム</h3>
+                        <p class="text-gray-500 text-[10px] mb-10 tracking-[0.2em] uppercase font-bold">Total Life Architecture</p>
+                        <div class="text-5xl font-bold text-primary mb-12 tracking-tighter">
+                            ¥418,000<span class="text-xs text-gray-500 font-normal ml-3 uppercase tracking-normal">incl. tax</span>
+                        </div>
+                        <ul class="text-gray-300 text-sm space-y-6 mb-16 flex-grow font-light">
+                            <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> パーソナルトレーニング全24回</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> 徹底食事・睡眠管理生活習慣サポート</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> 姿勢診断・リカバリーケア込</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg> 個別最適化したサプリメント付与</li>
+                        </ul>
+                        <a href="#contact" class="block w-full bg-primary text-black text-center py-5 text-sm font-bold tracking-[0.3em] uppercase hover:bg-yellow-600 transition-all rounded-sm shadow-xl shadow-yellow-900/30 transform active:scale-95">Book Experience Now</a>
+                    </article>
+                </div>
+                <p class="mt-20 text-gray-600 text-xs font-light">※別途入会金 ¥33,000(税込)が必要です。各回ミネラルウォーター・プロテイン込。</p>
+            </div>
+        </section>
+
+        <!-- トレーナー：TRAINER -->
+        <section id="trainer" class="py-24 md:py-40 bg-darker">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">The Trainer</h2>
+                <div class="w-16 h-px bg-primary mx-auto mb-16 opacity-50"></div>
+
+                <article class="flex flex-col md:flex-row items-center bg-panel border border-gray-800 overflow-hidden shadow-2xl rounded-sm text-left">
+                    <div class="w-full md:w-1/2 aspect-square md:aspect-auto md:min-h-[550px] overflow-hidden relative">
+                        <img src="eylg_face01.jpg" alt="中目黒・代官山の専属パーソナルトレーナー阿部のプロフィール画像" class="w-full h-full object-cover grayscale brightness-75 hover:scale-105 transition-transform duration-1000" loading="lazy">
+                    </div>
+                    <div class="w-full md:w-1/2 p-10 md:p-16">
+                        <div class="text-primary text-[10px] font-bold tracking-[0.3em] mb-4 uppercase">Chief Instructor</div>
+                        <h3 class="text-3xl font-bold text-white mb-8 tracking-wider">阿部 <span class="text-sm font-normal text-gray-500 ml-4 italic uppercase tracking-[0.2em]">ABE</span></h3>
+                        <p class="text-gray-400 text-sm md:text-base leading-loose mb-12 font-light">
+                            大手パーソナルジムにてトップトレーナーとして数千のセッションを執刀。身体の変化が人生に与えるインパクトを誰よりも理解し、EYLGを設立。
+                            <br><br>
+                            解剖学に基づく身体操作指導に加え、高揚感を演出する空間設計に拘り、中目黒・代官山エリアの感度の高い顧客から確実な変化に高い評価を得ている。
+                        </p>
+                        <div class="border-t border-gray-800 pt-10 font-bold uppercase tracking-widest">
+                            <p class="text-[10px] text-gray-500 mb-6 tracking-widest">Qualifications</p>
+                            <ul class="text-[11px] text-gray-500 space-y-4 font-light normal-case">
+                                <li class="flex items-start"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 mr-4 flex-shrink-0"></span> NSCA-CPT（全米ストレングス&コンディショニング協会認定）</li>
+                                <li class="flex items-start"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 mr-4 flex-shrink-0"></span> NESTA-PFT（全米エクササイズ&スポーツトレーナー協会認定）</li>
+                                <li class="flex items-start"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 mr-4 flex-shrink-0"></span> 健康運動実践指導者 / 睡眠栄養改善アドバイザー</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- アクセス：ローカルSEO -->
+        <section id="access" class="py-24 md:py-40 bg-dark">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">Access</h2>
+                <div class="w-16 h-px bg-primary mx-auto mb-16 opacity-50"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 text-left max-w-5xl mx-auto">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-10 tracking-widest uppercase">EYLG <span class="text-xs font-normal text-gray-500 ml-2 uppercase italic tracking-widest">Enrich Your Life GYM</span></h3>
+                        <table class="w-full text-sm text-gray-400 text-left border-collapse font-light">
+                            <tbody class="divide-y divide-gray-800">
+                                <tr>
+                                    <th class="py-7 font-bold text-gray-300 w-32 align-top tracking-widest uppercase">Address</th>
+                                    <td class="py-7 leading-loose tracking-widest text-white">
+                                        〒153-0042<br>
+                                        東京都目黒区青葉台一丁目 〇〇-〇〇<br>
+                                        〇〇ビル 4F（完全個室・完全予約制）
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="py-7 font-bold text-gray-300 tracking-widest uppercase">Station</th>
+                                    <td class="py-7 leading-loose tracking-widest">
+                                        東急東横線・日比谷線「<span class="text-white font-bold underline decoration-primary decoration-2 underline-offset-8">中目黒駅</span>」徒歩5分<br>
+                                        東急東横線「<span class="text-white font-bold underline decoration-primary decoration-2 underline-offset-8">代官山駅</span>」徒歩8分
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="h-80 lg:h-full min-h-[400px] bg-panel border border-gray-800 flex items-center justify-center relative shadow-inner overflow-hidden rounded-sm group">
+                         <span class="text-gray-600 text-[10px] tracking-[0.4em] uppercase group-hover:text-primary transition-colors">Google Map Area</span>
+                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- コンタクト：最終CTA -->
-    <section id="contact" class="py-24 md:py-40 bg-darker">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <div class="mb-20 md:mb-24">
-                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">Contact</h2>
-                <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
-                <p class="text-white text-3xl md:text-5xl font-bold tracking-widest mb-10 leading-tight">人生の景色を、<br class="sm:hidden">変える準備はできていますか？</p>
-                <p class="text-gray-500 text-sm md:text-lg leading-relaxed font-light">まずは無料カウンセリング、または初回体験トレーニングから。<br>無理な勧誘は一切ございません。安心してご相談ください。</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start text-left">
-                <!-- LINE：UX 即時性のある窓口 -->
-                <div class="bg-panel border border-gray-800 p-12 text-center rounded-sm shadow-2xl">
-                    <h3 class="text-xl font-bold text-white mb-8 tracking-widest">LINE公式アカウント</h3>
-                    <p class="text-gray-400 text-sm leading-loose mb-12 font-light">
-                        24時間365日受付。空き状況の確認、ご質問、<br class="hidden sm:block">体験予約がスムーズに完了します。
-                    </p>
-                    <a href="https://lin.ee/lYptjpN" target="_blank" rel="noopener noreferrer" class="w-full bg-line text-white font-bold py-6 flex items-center justify-center rounded-sm hover:brightness-110 transition-all shadow-xl shadow-green-900/10 transform active:scale-95">
-                        <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.122.303.079.759.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.304z"/>
-                        </svg>
-                        LINEで友だち追加する
-                    </a>
+        <!-- コンタクト：CTA最適化 -->
+        <section id="contact" class="py-24 md:py-40 bg-darker">
+            <div class="max-w-6xl mx-auto px-6 text-center">
+                <div class="mb-20 md:mb-32">
+                    <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase">Contact</h2>
+                    <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
+                    <p class="text-white text-3xl md:text-5xl font-bold tracking-widest mb-10 leading-tight">人生の景色を、<br class="sm:hidden">変える準備はできていますか？</p>
+                    <p class="text-gray-500 text-sm md:text-lg leading-relaxed font-light">まずは無料カウンセリング、または初回体験トレーニングから。<br>無理な勧誘は一切ございません。安心してご相談ください。</p>
                 </div>
 
-                <!-- フォーム：UX 正式な窓口 -->
-                <div class="bg-panel border border-gray-800 p-12 rounded-sm shadow-2xl">
-                    <form class="space-y-8">
-                        <div class="group">
-                            <label class="block text-[10px] font-bold text-gray-500 mb-3 tracking-[0.2em] uppercase group-focus-within:text-primary transition-colors">Name / お名前</label>
-                            <input type="text" required class="w-full bg-darker border border-gray-800 rounded-none px-5 py-4 text-white text-sm focus:outline-none focus:border-primary transition-all font-light" placeholder="山田 太郎">
-                        </div>
-                        <div class="group">
-                            <label class="block text-[10px] font-bold text-gray-500 mb-3 tracking-[0.2em] uppercase group-focus-within:text-primary transition-colors">Email / メールアドレス</label>
-                            <input type="email" required class="w-full bg-darker border border-gray-800 rounded-none px-5 py-4 text-white text-sm focus:outline-none focus:border-primary transition-all font-light" placeholder="example@domain.com">
-                        </div>
-                        <div class="group">
-                            <label class="block text-[10px] font-bold text-gray-500 mb-3 tracking-[0.2em] uppercase group-focus-within:text-primary transition-colors">Message / ご相談内容</label>
-                            <textarea rows="4" required class="w-full bg-darker border border-gray-800 rounded-none px-5 py-4 text-white text-sm focus:outline-none focus:border-primary transition-all font-light" placeholder="体験希望日時、お悩みなどをご記入ください"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-primary text-black font-bold py-6 tracking-[0.4em] hover:bg-yellow-600 transition-all uppercase text-sm shadow-lg shadow-yellow-900/20 transform active:scale-95">
-                            Send Inquiry
-                        </button>
-                    </form>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start text-left">
+                    <!-- LINE：即時性重視 -->
+                    <div class="bg-panel border border-gray-800 p-12 text-center rounded-sm shadow-2xl hover:border-line/50 transition-colors group">
+                        <h3 class="text-xl font-bold text-white mb-8 tracking-widest uppercase">Line Reservation</h3>
+                        <p class="text-gray-400 text-sm leading-loose mb-12 font-light">24時間365日受付。空き状況の確認、ご質問、<br class="hidden sm:block">体験予約がスムーズに完了します。</p>
+                        <a href="https://lin.ee/lYptjpN" target="_blank" rel="noopener noreferrer" class="w-full bg-line text-white font-bold py-6 flex items-center justify-center rounded-sm hover:brightness-110 transition-all shadow-xl shadow-green-900/10 transform active:scale-95">
+                            <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.122.303.079.759.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.304z"/></svg>
+                            LINEで友だち追加する
+                        </a>
+                    </div>
+
+                    <!-- フォーム：信頼性重視 -->
+                    <div class="bg-panel border border-gray-800 p-12 rounded-sm shadow-2xl">
+                        <form class="space-y-8 font-bold">
+                            <div class="group">
+                                <label class="block text-[10px] font-bold text-gray-500 mb-3 tracking-[0.3em] uppercase group-focus-within:text-primary transition-colors">Name / お名前</label>
+                                <input type="text" required class="w-full bg-darker border border-gray-800 rounded-none px-5 py-4 text-white text-sm focus:outline-none focus:border-primary transition-all font-light" placeholder="山田 太郎">
+                            </div>
+                            <div class="group">
+                                <label class="block text-[10px] font-bold text-gray-500 mb-3 tracking-[0.3em] uppercase group-focus-within:text-primary transition-colors">Email / メールアドレス</label>
+                                <input type="email" required class="w-full bg-darker border border-gray-800 rounded-none px-5 py-4 text-white text-sm focus:outline-none focus:border-primary transition-all font-light" placeholder="example@domain.com">
+                            </div>
+                            <div class="group">
+                                <label class="block text-[10px] font-bold text-gray-500 mb-3 tracking-[0.3em] uppercase group-focus-within:text-primary transition-colors">Message / ご相談内容</label>
+                                <textarea rows="4" required class="w-full bg-darker border border-gray-800 rounded-none px-5 py-4 text-white text-sm focus:outline-none focus:border-primary transition-all font-light" placeholder="体験希望日時、お悩みなどをご記入ください"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary text-black font-bold py-6 tracking-[0.5em] hover:bg-yellow-600 transition-all uppercase text-sm shadow-lg shadow-yellow-900/20 transform active:scale-95">
+                                Send Inquiry
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     </main>
 
     <!-- フッター -->
     <footer class="bg-black py-24 border-t border-gray-900 text-center px-6">
         <div class="max-w-7xl mx-auto">
             <div class="mb-12">
-                <a href="#" class="text-3xl font-bold tracking-[0.3em] text-white">EY<span class="text-primary">LG</span></a>
+                <a href="#" class="text-3xl font-bold tracking-[0.4em] text-white uppercase">EY<span class="text-primary">LG</span></a>
                 <p class="text-[10px] text-gray-600 mt-4 tracking-[0.4em] uppercase font-bold italic">Enrich Your Life GYM</p>
             </div>
             
-            <nav class="flex flex-wrap justify-center gap-x-10 gap-y-6 mb-16 border-y border-gray-900 py-10">
-                <a href="#concept" class="text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.2em]">Concept</a>
-                <a href="#promises" class="text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.2em]">Promises</a>
-                <a href="#features" class="text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.2em]">Features</a>
-                <a href="#results" class="text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.2em]">Results</a>
-                <a href="#pricing" class="text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.2em]">Pricing</a>
-                <a href="#access" class="text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.2em]">Access</a>
+            <nav class="flex flex-wrap justify-center gap-x-10 gap-y-6 mb-16 border-y border-gray-900 py-10 font-bold">
+                <a href="#concept" class="text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">Concept</a>
+                <a href="#promises" class="text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">Promises</a>
+                <a href="#features" class="text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">Features</a>
+                <a href="#results" class="text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">Results</a>
+                <a href="#pricing" class="text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">Pricing</a>
+                <a href="#access" class="text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">Access</a>
             </nav>
 
             <p class="text-[10px] text-gray-700 tracking-widest uppercase mb-6 font-light">
@@ -513,16 +529,78 @@
         </div>
     </footer>
 
-    <!-- UI/UX: スマホ用追従フローティングCTA -->
-    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md z-50 lg:hidden flex gap-2">
-        <a href="https://lin.ee/lYptjpN" class="flex-1 bg-line text-white py-4 rounded-sm flex items-center justify-center shadow-2xl transform active:scale-95 transition-all text-xs font-bold tracking-tighter">
+    <!-- UI/UX: スマホ用追従フローティングCTA（最重要アクション） -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md z-[55] lg:hidden flex gap-2">
+        <a href="https://lin.ee/lYptjpN" target="_blank" class="flex-1 bg-line text-white py-4 rounded-sm flex items-center justify-center shadow-2xl transform active:scale-95 transition-all text-[10px] font-bold tracking-tighter uppercase">
             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.122.303.079.759.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.304z"/></svg>
             LINE相談
         </a>
-        <a href="#contact" class="flex-[1.5] bg-primary text-black py-4 rounded-sm flex items-center justify-center shadow-2xl transform active:scale-95 transition-all text-xs font-bold tracking-widest">
-            無料体験トレーニング
+        <a href="#contact" class="flex-[1.5] bg-primary text-black py-4 rounded-sm flex items-center justify-center shadow-2xl transform active:scale-95 transition-all text-[10px] font-bold tracking-[0.1em] uppercase">
+            体験トレーニング予約
         </a>
     </div>
+
+    <!-- メニュー制御スクリプト -->
+    <script>
+        const body = document.body;
+        const menuBtn = document.getElementById('menu-btn');
+        const menuOverlay = document.getElementById('mobile-menu-overlay');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        function toggleMenu() {
+            body.classList.toggle('menu-open');
+            const isOpen = body.classList.contains('menu-open');
+            body.style.overflow = isOpen ? 'hidden' : '';
+            
+            // ハンバーガーアイコンのアニメーション制御
+            const spans = menuBtn.querySelectorAll('span');
+            if(isOpen) {
+                spans[0].style.transform = 'translateY(8px) rotate(45deg)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        
+        // リンククリック時やオーバーレイクリック時に閉じる
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (body.classList.contains('menu-open')) toggleMenu();
+            });
+        });
+        
+        menuOverlay.addEventListener('click', (e) => {
+            if (e.target === menuOverlay) toggleMenu();
+        });
+
+        // ページ内スクロール調整（ヘッダー高さを考慮）
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offset = 80;
+                        const bodyRect = document.body.getBoundingClientRect().top;
+                        const elementRect = target.getBoundingClientRect().top;
+                        const elementPosition = elementRect - bodyRect;
+                        const offsetPosition = elementPosition - offset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
