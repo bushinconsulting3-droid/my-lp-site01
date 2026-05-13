@@ -1,704 +1,613 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="東京都葛飾区・足立区を中心に外壁塗装、屋根塗装、雨漏り修理などの塗装工事全般を行う西城建装。完全自社施工による適正価格で、戸建てからアパート・店舗まで対応。お見積り・ご相談は無料です。">
-  <meta name="keywords" content="外壁塗装,屋根塗装,防水工事,リフォーム,葛飾区,足立区,西城建装,塗り替え,雨漏り修理">
-  <title>葛飾区・足立区の外壁塗装・雨漏り・塗装工事は西城建装</title>
-  
-  <link rel="icon" type="image/jpeg" href="ロゴ08_saijo.jpg">
-  <link rel="apple-touch-icon" href="ロゴ08_saijo.jpg">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO対策 -->
+    <meta name="description" content="中目黒・代官山エリアの完全個室パーソナルジム『EYLG（エイルグ）』。身体が変われば人生の景色が変わる。暗闇と音楽の没入空間でQOLを最大化。元FeelCycle SVの阿部が指導。月16回の集中プランから回数券まで。">
+    <meta name="keywords" content="中目黒 パーソナルジム,代官山 パーソナルジム,完全個室,目黒区 中目黒,青葉台,ダイエット,ボディメイク,EYLG,エイルグ,暗闇フィットネス">
+    <title>【公式】EYLG（エイルグ）| 中目黒・代官山の完全個室パーソナルジム</title>
 
-  <script type="application/ld+json">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#d4af37',
+                        dark: '#0a0a0a',
+                        darker: '#000000',
+                        panel: '#1a1a1a',
+                        line: '#06C755'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            scroll-padding-top: 80px;
+        }
+        .bg-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('eylg02.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        /* インタラクション：カードの浮き上がりと発光 */
+        .hover-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-card:hover {
+            transform: translateY(-8px);
+            border-color: #d4af37;
+            box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.25);
+        }
+        /* モバイルメニュー */
+        #mobile-menu-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #mobile-menu-content {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(100%);
+        }
+        body.menu-open #mobile-menu-overlay {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        body.menu-open #mobile-menu-content {
+            transform: translateX(0);
+        }
+    </style>
+
+    <!-- 構造化データ：MEO対策 -->
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "HousePainter",
-      "name": "西城建装",
-      "image": "ロゴ08_saijo.jpg",
-      "description": "東京都葛飾区・足立区を中心に外壁塗装、屋根塗装、雨漏り修理などの塗装工事全般を行う施工業者。",
+      "@type": "HealthClub",
+      "name": "EYLG（エイルグ）",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "東堀切2-1-8-レジデンスキミ303",
-        "addressLocality": "葛飾区",
         "addressRegion": "東京都",
-        "postalCode": "124-0004",
-        "addressCountry": "JP"
+        "addressLocality": "目黒区",
+        "streetAddress": "中目黒 1-4-20 サードリハイツ本館702"
       },
-      "telephone": "080-1271-1113",
-      "areaServed": ["葛飾区", "足立区", "東京都", "千葉県", "埼玉県"]
+      "url": "https://megs-fitness.com/dark-fitness/",
+      "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 09:00-21:00",
+      "telephone": "+81-3-0000-0000"
     }
-  </script>
-
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    @keyframes slow-zoom {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.1); }
-    }
-    .animate-slow-zoom {
-      animation: slow-zoom 30s ease-in-out infinite alternate;
-    }
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f8fafc; 
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #cbd5e1; 
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8; 
-    }
-    .reveal-target {
-      will-change: opacity, transform;
-    }
-
-    /* =========================================================
-       高級感創出用 プレミアムSVGアイコン 共通スタイル
-    ========================================================= */
-    .premium-icon {
-      display: inline-block;
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .premium-icon path,
-    .premium-icon circle,
-    .premium-icon rect,
-    .premium-icon line,
-    .premium-icon polyline {
-      stroke: url(#luxury-gold-gradient) !important;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      fill: none !important;
-    }
-    .premium-icon.viewbox-256 path,
-    .premium-icon.viewbox-256 circle,
-    .premium-icon.viewbox-256 rect,
-    .premium-icon.viewbox-256 line,
-    .premium-icon.viewbox-256 polyline {
-      stroke-width: 12 !important;
-    }
-    .premium-icon.viewbox-24 path,
-    .premium-icon.viewbox-24 circle,
-    .premium-icon.viewbox-24 rect,
-    .premium-icon.viewbox-24 line,
-    .premium-icon.viewbox-24 polyline {
-      stroke-width: 1.25 !important;
-    }
-    .group:hover .premium-icon,
-    button:hover .premium-icon,
-    a:hover .premium-icon {
-      transform: scale(1.08) translateY(-1px);
-      filter: drop-shadow(0px 4px 8px rgba(227, 168, 18, 0.4));
-    }
-  </style>
+    </script>
 </head>
-<body>
-  <div id="root"></div>
+<body class="bg-darker text-gray-300 antialiased leading-relaxed overflow-x-hidden">
 
-  <script type="text/babel">
-    const { useState, useEffect, useRef } = React;
-
-    const LuxuryGradient = () => (
-      <svg width="0" height="0" style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }} aria-hidden="true">
-        <defs>
-          <linearGradient id="luxury-gold-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#FFD86E" />
-            <stop offset="50%" stopColor="#D19E1D" />
-            <stop offset="100%" stopColor="#E3A812" />
-          </linearGradient>
-        </defs>
-      </svg>
-    );
-
-    const IconPhone = ({ className }) => <svg className={`${className} premium-icon viewbox-256`} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="64" y="24" width="128" height="208" rx="16"></rect><line x1="64" y1="64" x2="192" y2="64"></line><line x1="64" y1="192" x2="192" y2="192"></line></svg>;
-    const IconMessage = ({ className }) => <svg className={`${className} premium-icon viewbox-256`} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M128,230A102,102,0,1,0,26,128c0,16.5,4.1,32,11.5,45.7L26,209.1a14.1,14.1,0,0,0,17.4,17.4l35.4-11.5A102.3,102.3,0,0,0,128,230Z"></path></svg>;
-    const IconMail = ({ className }) => <svg className={`${className} premium-icon viewbox-256`} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M224,48H32a14,14,0,0,0-14,14V194a14,14,0,0,0,14,14H224a14,14,0,0,0,14-14V62A14,14,0,0,0,224,48Z"></path><polyline points="238 62 128 144 18 62"></polyline></svg>;
-    const IconCheck = ({ className }) => <svg className={`${className} premium-icon viewbox-256`} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="128" cy="128" r="96"></circle><polyline points="172 96 112 168 84 136"></polyline></svg>;
-    const IconMapPin = ({ className }) => <svg className={`${className} premium-icon viewbox-256`} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="128" cy="104" r="32"></circle><path d="M208,104c0,72-80,128-80,128S48,176,48,104a80,80,0,0,1,160,0Z"></path></svg>;
-    const IconTool = ({ className }) => <svg className={`${className} premium-icon viewbox-256`} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="128" cy="128" r="36"></circle><path d="M226.79,146l-20.9-10.45a70.07,70.07,0,0,0,0-15.1l20.9-10.45a14,14,0,0,0,6.67-17.15l-14.37-34.7a14,14,0,0,0-16.71-8L180.12,56.7a70.43,70.43,0,0,0-10.68-10.68L176,23.63a14,14,0,0,0-8-16.71l-34.7-14.37a14,14,0,0,0-17.15,6.67L105.7,20.12a70.07,70.07,0,0,0-15.1,0L80.15,20.12a14,14,0,0,0-17.15-6.67l-34.7,14.37a14,14,0,0,0-8,16.71L26.88,46a70.43,70.43,0,0,0-10.68,10.68L-6.08,50.15a14,14,0,0,0-16.71,8L-37.16,92.85a14,14,0,0,0,6.67,17.15L-9.59,120.45a70.07,70.07,0,0,0,0,15.1l-20.9,10.45a14,14,0,0,0-6.67,17.15l14.37,34.7a14,14,0,0,0,16.71,8L16.2,199.3a70.43,70.43,0,0,0,10.68,10.68L20.3,232.37a14,14,0,0,0,8,16.71l34.7,14.37a14,14,0,0,0,17.15-6.67l10.45-20.9a70.07,70.07,0,0,0,15.1,0l10.45,20.9a14,14,0,0,0,17.15,6.67l34.7-14.37a14,14,0,0,0,8-16.71l-6.58-22.39A70.43,70.43,0,0,0,180.12,199.3l22.26,6.55a14,14,0,0,0,16.71-8l14.37-34.7A14,14,0,0,0,226.79,146Z"></path></svg>;
-    const IconHome = ({ className }) => <svg className={`${className} premium-icon viewbox-256`} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M213.92,106.05l-80-80a14,14,0,0,0-19.84,0l-80,80A14,14,0,0,0,30,116v98a14,14,0,0,0,14,14h56a14,14,0,0,0,14-14V164a6,6,0,0,1,6-6h16a6,6,0,0,1,6,6v50a14,14,0,0,0,14,14h56a14,14,0,0,0,14-14V116A14,14,0,0,0,213.92,106.05Z"></path></svg>;
-
-    // 既存の24px viewBoxベースのアイコン群には viewbox-24 を適用
-    const IconPaint = ({ className }) => <svg className={`${className} premium-icon viewbox-24`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="5" width="18" height="6" rx="2" /><path d="M18 11v2a2 2 0 0 1-2 2h-4a2 2 0 0 0-2 2v4" /><rect x="8" y="21" width="4" height="2" rx="1" /></svg>;
-    const IconDrop = ({ className }) => <svg className={`${className} premium-icon viewbox-24`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z" /></svg>;
-    const IconShield = ({ className }) => <svg className={`${className} premium-icon viewbox-24`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>;
-    const IconMenu = ({ className }) => <svg className={`${className} premium-icon viewbox-24`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /></svg>;
-    const IconX = ({ className }) => <svg className={`${className} premium-icon viewbox-24`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>;
-    const IconArrowRight = ({ className }) => <svg className={`${className} premium-icon viewbox-24`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>;
-    const IconThumbsUp = ({ className }) => <svg className={`${className} premium-icon viewbox-24`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 10v12" /><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z" /></svg>;
-
-    const FaqItem = ({ question, answer }) => {
-      const [isOpen, setIsOpen] = useState(false);
-      return (
-        <div className="border border-gray-100 rounded-2xl mb-4 overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-300 group">
-          <button 
-            onClick={() => setIsOpen(!isOpen)} 
-            className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-slate-50 transition-colors"
-          >
-            <span className="font-bold text-slate-800 flex items-start text-sm md:text-base leading-relaxed tracking-wide">
-              <span className="text-blue-600 mr-3 text-lg leading-none mt-0.5 font-black">Q.</span>
-              {question}
-            </span>
-            <svg className={`h-5 w-5 premium-icon viewbox-24 flex-shrink-0 transform transition-transform duration-300 ml-4 ${isOpen ? 'rotate-180' : ''}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M19 9l-7 7-7-7" /></svg>
-          </button>
-          <div className={`px-6 overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 pb-5 opacity-100' : 'max-h-0 opacity-0'}`}>
-            <div className="pt-4 border-t border-slate-50">
-              <p className="text-slate-600 font-medium flex items-start text-sm md:text-base leading-relaxed tracking-wide">
-                <span className="text-orange-500 mr-3 text-lg leading-none font-black mt-0.5">A.</span>
-                {answer}
-              </p>
-            </div>
-          </div>
-        </div>
-      );
-    };
-
-    function App() {
-      const [isMenuOpen, setIsMenuOpen] = useState(false);
-      const [isScrolled, setIsScrolled] = useState(false);
-
-      const navItems = [
-        { label: '選ばれる理由', id: 'features' },
-        { label: '事業内容', id: 'services' },
-        { label: '代表挨拶', id: 'about' },
-        { label: 'よくある質問', id: 'faq' },
-        { label: '対応エリア', id: 'area' }
-      ];
-
-      useEffect(() => {
-        const handleScroll = () => {
-          setIsScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-
-        const observerOptions = {
-          root: null,
-          rootMargin: '0px',
-          threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.remove('opacity-0', 'translate-y-8');
-              entry.target.classList.add('opacity-100', 'translate-y-0');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, observerOptions);
-
-        const revealElements = document.querySelectorAll('.reveal-target');
-        revealElements.forEach(el => observer.observe(el));
-
-        return () => {
-          window.removeEventListener('scroll', handleScroll);
-          revealElements.forEach(el => observer.unobserve(el));
-        };
-      }, []);
-
-      const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-      const scrollToSection = (id) => {
-        const element = document.getElementById(id);
-        if (element) {
-          const headerOffset = 80;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-          setIsMenuOpen(false);
-        }
-      };
-
-      const handlePhoneClick = (e) => {
-        e.preventDefault();
-        const p1 = "080";
-        const p2 = "1271";
-        const p3 = "1113";
-        window.location.href = `tel:${p1}${p2}${p3}`;
-      };
-
-      const handleEmailClick = (e) => {
-        e.preventDefault();
-        const user = "as12711113";
-        const domain = "gmail.com";
-        window.location.href = `mailto:${user}@${domain}`;
-      };
-
-      return (
-        <div className="font-sans text-slate-800 bg-[#f8fafc] pb-24 md:pb-0 overflow-x-hidden selection:bg-blue-200 selection:text-blue-900">
-          <LuxuryGradient />
-          <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-1' : 'bg-white/90 backdrop-blur-sm shadow-sm py-3'}`}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-between items-center h-16 md:h-20">
-                <div className="flex-shrink-0 flex items-center cursor-pointer group" onClick={() => scrollToSection('home')}>
-                  <img src="ロゴ08_saijo.jpg" alt="西城建装シンボル" className="h-10 md:h-12 w-auto object-contain mix-blend-multiply mr-2 md:mr-3 transition-transform duration-300 group-hover:scale-105" />
-                  <img src="ロゴ09_saijo.jpg" alt="西城建装ロゴテキスト" className="h-8 md:h-10 w-auto object-contain mix-blend-multiply transition-opacity duration-300 group-hover:opacity-80" />
+    <!-- ヘッダー -->
+    <header class="fixed w-full z-50 bg-black/95 backdrop-blur-md border-b border-gray-900 font-bold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-left">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold tracking-widest text-white hover:text-primary transition-colors">
+                        EY<span class="text-primary">LG</span>
+                    </a>
                 </div>
                 
-                <nav className="hidden lg:flex space-x-1 xl:space-x-4">
-                  {navItems.map((item, idx) => (
-                    <button key={idx} onClick={() => scrollToSection(item.id)} className="px-4 py-2 rounded-full text-slate-600 hover:text-blue-700 hover:bg-blue-50 font-bold transition-all duration-300 text-sm tracking-wide">
-                      {item.label}
-                    </button>
-                  ))}
+                <nav class="hidden lg:flex space-x-10">
+                    <a href="#concept" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase">Concept</a>
+                    <a href="#promises" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase">4 Promises</a>
+                    <a href="#features" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase">Features</a>
+                    <a href="#results" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase">Results</a>
+                    <a href="#pricing" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase">Pricing</a>
+                    <a href="#trainer" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase">Trainer</a>
                 </nav>
 
-                <div className="hidden md:flex items-center space-x-3 xl:space-x-4">
-                  <div className="flex flex-col items-end mr-1 lg:mr-2">
-                    <span className="text-[10px] font-bold text-orange-600 bg-orange-100 px-2.5 py-0.5 rounded-full mb-0.5 border border-orange-200 shadow-sm tracking-wider">お見積り無料</span>
-                    <span className="text-base lg:text-lg xl:text-xl font-extrabold text-slate-900 flex items-center tracking-widest"><IconPhone className="h-4 w-4 mr-1.5" /> 080-1271-1113</span>
-                  </div>
-                  <a href="https://line.me/ti/p/~2525aiki" target="_blank" rel="noopener noreferrer" className="group bg-gradient-to-br from-[#06C755] to-[#05b34c] text-white p-3 rounded-full hover:shadow-[0_8px_16px_rgba(6,199,85,0.3)] transition-all duration-300 transform hover:-translate-y-1" title="LINEで相談">
-                    <IconMessage className="h-5 w-5" />
-                  </a>
-                  <button onClick={handleEmailClick} className="group bg-gradient-to-br from-blue-600 to-blue-700 text-white p-3 rounded-full hover:shadow-[0_8px_16px_rgba(37,99,235,0.3)] transition-all duration-300 transform hover:-translate-y-1" title="メールで相談">
-                    <IconMail className="h-5 w-5" />
-                  </button>
-                </div>
-
-                <div className="md:hidden flex items-center group">
-                  <button onClick={toggleMenu} className="text-slate-600 hover:text-blue-600 focus:outline-none p-2.5 bg-slate-50 rounded-xl transition-colors duration-300">
-                    {isMenuOpen ? <IconX className="h-6 w-6" /> : <IconMenu className="h-6 w-6" />}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {isMenuOpen && (
-              <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-slate-100 shadow-2xl absolute w-full transition-all duration-300">
-                <div className="px-5 pt-5 pb-8 space-y-3">
-                  {navItems.map((item, idx) => (
-                    <button key={idx} onClick={() => scrollToSection(item.id)} className="block w-full text-left px-5 py-4 text-base font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-700 rounded-xl transition-colors tracking-wide">
-                      {item.label}
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:block">
+                        <a href="#contact" class="bg-primary text-black px-6 py-2.5 text-xs font-bold tracking-widest hover:bg-yellow-600 transition-all rounded-sm shadow-lg transform active:scale-95">
+                            無料カウンセリング
+                        </a>
+                    </div>
+                    <!-- ハンバーガーメニュー -->
+                    <button id="menu-btn" class="lg:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 z-[70] focus:outline-none" aria-label="メニュー">
+                        <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                        <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                        <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
                     </button>
-                  ))}
-                  <div className="mt-6 pt-6 border-t border-slate-100">
-                    <p className="text-center text-xs font-bold text-slate-400 mb-4 tracking-widest">ご相談はこちら</p>
-                    <div className="grid grid-cols-2 gap-3 mb-3">
-                      <a href="https://line.me/ti/p/~2525aiki" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center bg-gradient-to-br from-[#06C755] to-[#05b34c] text-white px-4 py-4 rounded-xl font-bold text-sm shadow-md active:scale-95 transition-transform">
-                        <IconMessage className="mr-2 h-5 w-5" /> LINE
-                      </a>
-                      <button onClick={handleEmailClick} className="group flex items-center justify-center bg-gradient-to-br from-blue-600 to-blue-700 text-white px-4 py-4 rounded-xl font-bold text-sm shadow-md active:scale-95 transition-transform">
-                        <IconMail className="mr-2 h-5 w-5" /> メール
-                      </button>
-                    </div>
-                    <button onClick={handlePhoneClick} className="group flex items-center justify-center w-full bg-gradient-to-br from-orange-500 to-orange-600 text-white px-4 py-4 rounded-xl font-bold text-lg shadow-md active:scale-95 transition-transform tracking-widest">
-                      <IconPhone className="mr-2 h-5 w-5" /> 080-1271-1113
-                    </button>
-                  </div>
                 </div>
-              </div>
-            )}
-          </header>
-
-          <main className="pt-0">
-            
-            <section id="home" className="relative bg-slate-900 h-[100svh] min-h-[650px] max-h-[900px] flex items-center justify-center text-center overflow-hidden">
-              <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-900/90 z-10"></div>
-                <img 
-                  src="写真外壁塗装01.jpg" 
-                  alt="葛飾区・足立区の外壁塗装・屋根塗装・雨漏り修理の施工事例イメージ" 
-                  className="w-full h-full object-cover animate-slow-zoom opacity-80"
-                />
-              </div>
-              <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center mt-16 md:mt-0 reveal-target opacity-0 translate-y-8 transition-all duration-1000 ease-out">
-                <div className="inline-flex items-center backdrop-blur-md bg-white/10 border border-white/20 text-white font-bold px-6 py-3 rounded-full text-sm md:text-base mb-8 shadow-2xl tracking-widest">
-                  <span className="w-2.5 h-2.5 rounded-full bg-blue-400 mr-3 animate-pulse shadow-[0_0_10px_rgba(96,165,250,0.8)]"></span>
-                  塗装歴10年以上・自社施工で高品質
-                </div>
-                
-                <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.2] mb-8 tracking-tight drop-shadow-2xl max-w-5xl">
-                  葛飾区・足立区で<br />
-                  外壁塗装・雨漏り修理・<br className="md:hidden" />塗装工事なら<br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 drop-shadow-none relative inline-block mt-3 lg:mt-5">
-                    西城建装へ
-                    <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-50"></span>
-                  </span>
-                </h1>
-                
-                <p className="text-lg md:text-xl lg:text-2xl text-slate-200 mb-12 font-medium leading-relaxed max-w-2xl drop-shadow-lg opacity-90 tracking-wide">
-                  戸建てからアパート、店舗まで対応。<br />
-                  確かな技術と柔軟なフットワークで、住まいの悩みを解決します。
-                </p>
-                
-                <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 w-full max-w-2xl justify-center mb-24 md:mb-16">
-                  <button onClick={() => scrollToSection('contact')} className="group bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white px-8 py-5 rounded-full text-lg font-bold flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1.5 shadow-[0_10px_30px_rgba(249,115,22,0.4)] w-full sm:w-auto border border-orange-400/30">
-                    <IconPhone className="mr-2 h-6 w-6 transition-transform duration-300" /> 無料見積り・相談
-                  </button>
-                  <a href="https://line.me/ti/p/~2525aiki" target="_blank" rel="noopener noreferrer" className="group bg-gradient-to-br from-[#06C755] to-[#05b34c] hover:from-[#05b34c] hover:to-[#04a044] text-white px-8 py-5 rounded-full text-lg font-bold flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1.5 shadow-[0_10px_30px_rgba(6,199,85,0.3)] w-full sm:w-auto border border-[#06C755]/30 relative overflow-hidden">
-                    <div className="absolute inset-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-[shine_1s_ease-out]"></div>
-                    <IconMessage className="mr-2 h-6 w-6 transition-transform duration-300 relative z-10" /> <span className="relative z-10">LINEで相談する</span>
-                  </a>
-                </div>
-              </div>
-
-              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center animate-bounce hidden md:flex cursor-pointer opacity-70 hover:opacity-100 transition-opacity" onClick={() => scrollToSection('features')}>
-                <span className="text-white text-xs font-bold tracking-widest mb-3 drop-shadow-md">SCROLL</span>
-                <div className="w-0.5 h-12 bg-gradient-to-b from-white to-transparent"></div>
-              </div>
-            </section>
-
-            <section id="features" className="py-24 bg-[#f8fafc] relative">
-              <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-white to-[#f8fafc]"></div>
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-20 reveal-target opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                  <div className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-blue-50 text-blue-700 font-bold tracking-widest text-xs mb-6 shadow-sm border border-blue-100">
-                    FEATURES
-                  </div>
-                  <p className="text-slate-500 font-bold mb-4 text-sm md:text-base tracking-widest">
-                    葛飾区・足立区周辺で外壁塗装や雨漏りなどの塗装工事にお困りのお客様から
-                  </p>
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-8 tracking-tight">
-                    西城建装が選ばれる<span className="text-blue-600">3</span>つの理由
-                  </h2>
-                  <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto rounded-full shadow-sm"></div>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 pt-8">
-                  {[
-                    {
-                      icon: IconShield,
-                      title: "塗装歴10年以上の技術と<br />4名体制の機動力",
-                      desc: "外壁塗装・屋根塗装業界で10年以上の経験を持つ代表をはじめ、技術と経験を兼ね備えた職人チームで稼働しています。突然の雨漏りトラブルや急な外装工事の相談にも、若さを活かした柔軟なフットワークで対応し、葛飾区・足立区における質の高い施工を迅速に実現します。",
-                      delay: "0ms"
-                    },
-                    {
-                      icon: IconMapPin,
-                      title: "葛飾・足立を中心とした<br />広域エリア対応",
-                      desc: "東京都葛飾区・足立区を拠点とし、地域の住宅事情や気候に精通しています。東京都全域、千葉県、埼玉県など近郊エリアまで幅広く対応しており、戸建ての外壁塗り替えだけでなく、マンション、アパート、店舗の防水工事や屋根修理、雨漏り調査も承ります。",
-                      delay: "100ms"
-                    },
-                    {
-                      icon: IconThumbsUp,
-                      title: "自社一貫施工と<br />「3つの約束」",
-                      desc: "職人が直接打ち合わせに伺う完全自社施工により、中間マージンをカットした適正価格で高品質な塗装工事・防水工事をご提供します。さらに「最善の提案」「自分の家を塗るような丁寧な施工」「安心のアフターフォロー」をお客様にお約束します。",
-                      delay: "200ms"
-                    }
-                  ].map((feature, idx) => (
-                    <div key={idx} className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.03)] border border-slate-100 relative mt-12 md:mt-0 group hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:border-blue-100 transition-all duration-500 transform hover:-translate-y-2 reveal-target opacity-0 translate-y-8 ease-out" style={{ transitionDelay: feature.delay, transitionDuration: '700ms' }}>
-                      <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-white rounded-[1.5rem] flex items-center justify-center shadow-xl border border-slate-50 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500 z-10">
-                        <div className="absolute inset-0 bg-blue-50/50 rounded-[1.5rem] transform rotate-6 group-hover:rotate-12 transition-transform duration-500"></div>
-                        <feature.icon className="h-10 w-10 relative z-20" />
-                      </div>
-                      <h3 className="text-xl lg:text-2xl font-black text-slate-900 mb-6 text-center mt-8 leading-tight tracking-wide" dangerouslySetInnerHTML={{__html: feature.title}}></h3>
-                      <p className="text-slate-600 leading-relaxed text-sm lg:text-base font-medium tracking-wide">
-                        {feature.desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            <section id="services" className="py-24 bg-white border-t border-slate-100">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-20 reveal-target opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                  <div className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-blue-50 text-blue-700 font-bold tracking-widest text-xs mb-6 shadow-sm border border-blue-100">
-                    SERVICES
-                  </div>
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-8 tracking-tight">
-                    外壁塗装・雨漏り・塗装工事などの<br className="md:hidden" />事業内容
-                  </h2>
-                  <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto rounded-full shadow-sm mb-10"></div>
-                  <p className="text-slate-600 max-w-3xl mx-auto text-base md:text-lg leading-relaxed font-medium tracking-wide">
-                    葛飾区・足立区周辺の気候や環境に適した塗装工事全般から、雨漏り修理・防水工事まで幅広く対応いたします。<br className="hidden md:block" />
-                    付帯物のちょっとした塗装など、小さな工事もお気軽にご相談ください。
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {[
-                    { icon: IconPaint, title: "外壁塗装・塗り替え工事", problem: "色あせ、ひび割れ、チョーキング", desc: "紫外線や雨風による劣化を防ぎ、建物の寿命を延ばします。外壁のひび割れ（クラック）は雨漏りの原因となるため早期の塗装工事が重要です。葛飾区や足立区の気候に合わせた最適な塗料で、戸建てからアパートまで対応します。", delay: "0ms" },
-                    { icon: IconHome, title: "内装塗装工事", problem: "壁の黒ずみ、タバコのヤニ、部屋を明るくしたい", desc: "室内の壁や天井、建具などの塗装を行います。クロス張替えでは表現できない質感や色合いで空間の雰囲気を変えます。葛飾区・足立区の店舗の内装リフォーム・室内塗装についてもご相談ください。", delay: "100ms" },
-                    { icon: IconDrop, title: "防水工事・雨漏り対策", problem: "雨漏りの不安、ベランダの水たまり、天井の染み", desc: "天井のシミや壁の濡れなど、突然の雨漏り修理から、ベランダや屋上の防水工事まで迅速に対応。劣化状況に応じた適切な防水処理を実施し、建物の内部腐食を引き起こす雨漏りを根本から防ぎます。", delay: "200ms" },
-                    { icon: IconTool, title: "シーリング（コーキング）", problem: "外壁の目地の割れ、サッシ周りの隙間", desc: "外壁材の隙間や窓サッシ周りを埋めるシーリング（コーキング）の打ち替えを実施し、建物の気密性と防水性を高め、雨水の侵入を防ぎます。外壁塗装や雨漏り修理とセットでの施工がメンテナンスとしておすすめです。", delay: "0ms" },
-                    { icon: IconHome, title: "屋根工事・屋根塗装", problem: "屋根の色落ち、コケ・カビ、瓦のズレ", desc: "屋根の塗装、漆喰補修、カバー工法などによる屋根の修繕を行います。見えにくい部分だからこそ丁寧な診断が必要です。外壁塗装工事と足場を共有することで費用を抑え、雨漏りが発生する前の適切なメンテナンスを提供します。", delay: "100ms" },
-                    { icon: IconCheck, title: "リフォーム工事全般", problem: "建物の老朽化、外装リフォームを一括で頼みたい", desc: "塗装工事や雨漏り修理など外装に関わる工事全般を得意とし、住宅の修繕や改修に対応します。住まいに関する悩みを一括して解決できる体制を整えており、複数業者を手配するお客様の手間とコストを省きます。", delay: "200ms" }
-                  ].map((service, idx) => (
-                    <div key={idx} className="bg-white p-8 lg:p-10 rounded-[2rem] shadow-[0_4px_20px_rgb(0,0,0,0.02)] border border-slate-100 flex flex-col h-full group hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:border-blue-100 transition-all duration-500 transform hover:-translate-y-2 reveal-target opacity-0 translate-y-8 ease-out" style={{ transitionDelay: service.delay, transitionDuration: '700ms' }}>
-                      <div className="bg-slate-50 w-16 h-16 rounded-[1.2rem] flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-blue-600 transition-all duration-500">
-                        <service.icon className="h-8 w-8 transition-colors duration-500" />
-                      </div>
-                      <h3 className="text-xl font-black text-slate-900 mb-4 tracking-wide">{service.title}</h3>
-                      <div className="bg-orange-50/80 border border-orange-100/50 rounded-xl p-4 mb-6">
-                        <p className="text-xs text-orange-800 font-bold mb-1.5 tracking-widest">こんな悩みに：</p>
-                        <p className="text-sm text-orange-900 font-medium leading-relaxed">{service.problem}</p>
-                      </div>
-                      <p className="text-slate-600 mb-10 flex-grow text-sm leading-relaxed font-medium tracking-wide">{service.desc}</p>
-                      <button onClick={() => scrollToSection('contact')} className="text-blue-600 font-bold flex items-center text-sm group-hover:text-blue-700 mt-auto w-fit bg-blue-50/50 px-5 py-2.5 rounded-full hover:bg-blue-100 transition-colors duration-300">
-                        詳しく相談する <IconArrowRight className="h-4 w-4 ml-2 transform group-hover:translate-x-1.5 transition-transform duration-300" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            <section id="about" className="py-24 relative overflow-hidden bg-slate-900">
-              <div className="absolute inset-0 z-0">
-                <img src="写真内装塗装01.jpg" alt="内装塗装" className="w-full h-full object-cover opacity-10 grayscale mix-blend-overlay" />
-                <div className="absolute inset-0 bg-slate-900/90"></div>
-              </div>
-              <div className="absolute top-0 right-0 -mr-40 -mt-40 w-[800px] h-[800px] rounded-full bg-gradient-to-bl from-blue-900/30 to-transparent blur-3xl pointer-events-none z-0"></div>
-              <div className="absolute bottom-0 left-0 -ml-40 -mb-40 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-cyan-900/20 to-transparent blur-3xl pointer-events-none z-0"></div>
-              
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal-target opacity-0 translate-y-8 transition-all duration-1000 ease-out">
-                <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
-                  <div className="w-full md:w-5/12">
-                    <div className="aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-slate-800 border border-slate-700/50 relative shadow-2xl group">
-                      <img src="写真職人01.jpg" alt="葛飾区・足立区で外壁塗装・雨漏り修理を行う西城建装代表" className="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-1000 ease-out" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-90 z-10"></div>
-                      <div className="absolute bottom-8 left-8 z-20">
-                        <span className="text-sm font-bold tracking-widest bg-white/10 px-6 py-2.5 rounded-full backdrop-blur-md text-white border border-white/20 shadow-lg">代表 西城 愛希</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-full md:w-7/12">
-                    <div className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-slate-800 text-blue-400 font-bold tracking-widest text-xs mb-6 shadow-sm border border-slate-700">
-                      MESSAGE
-                    </div>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-8 tracking-tight">代表挨拶</h2>
-                    <div className="w-16 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mb-10"></div>
-                    
-                    <div className="space-y-6 text-slate-300 leading-relaxed text-base md:text-lg font-medium tracking-wide">
-                      <p>
-                        西城建装代表の西城愛希です。私どもは東京都葛飾区・足立区周辺を拠点に、地域密着型で外壁塗装工事、屋根塗装、防水工事、雨漏り修理などの外装工事全般を展開しています。
-                      </p>
-                      <p>
-                        私自身、塗装工事歴は10年以上になります。職人4名の少数精鋭チームですが、確かな技術と豊富な現場経験には自信があります。お客様の『ありがとう』の笑顔が、私どもの仕事の最大のモチベーションです。
-                      </p>
-                      <div className="bg-slate-800/40 border border-slate-700/50 rounded-3xl p-8 my-10 backdrop-blur-sm group">
-                        <p className="text-white font-bold mb-6 tracking-wider">西城建装からお客様への「3つの約束」</p>
-                        <ul className="space-y-4">
-                          <li className="flex items-start"><IconCheck className="h-6 w-6 mr-4 flex-shrink-0 mt-0.5" /><span className="leading-relaxed">お客様のご要望に応えた<span className="text-white font-bold mx-1">最善のご提案</span>をいたします。</span></li>
-                          <li className="flex items-start"><IconCheck className="h-6 w-6 mr-4 flex-shrink-0 mt-0.5" /><span className="leading-relaxed">自分の家を塗るように<span className="text-white font-bold mx-1">丁寧な塗装工事</span>をお約束します。</span></li>
-                          <li className="flex items-start"><IconCheck className="h-6 w-6 mr-4 flex-shrink-0 mt-0.5" /><span className="leading-relaxed">柔軟なフットワークで、工事後の<span className="text-white font-bold mx-1">アフターフォロー</span>もご安心ください。</span></li>
-                        </ul>
-                      </div>
-                      <p>
-                        戸建ての塗り替えはもちろん、マンション、アパート、店舗の施工や、防水工事、ちょっとした付帯物の塗装まで、自社施工により高品質かつ適正価格で対応いたします。お住まいのご相談は、ぜひお気軽にお問い合わせください。
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section id="faq" className="py-24 bg-white border-t border-slate-100">
-              <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal-target opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                <div className="text-center mb-16">
-                  <div className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-blue-50 text-blue-700 font-bold tracking-widest text-xs mb-6 shadow-sm border border-blue-100">
-                    FAQ
-                  </div>
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-8 tracking-tight">
-                    外装工事に関するよくある質問
-                  </h2>
-                  <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto rounded-full shadow-sm mb-10"></div>
-                </div>
-
-                <div className="space-y-5">
-                  <FaqItem 
-                    question="葛飾区・足立区以外のエリアでも見積もりは無料ですか？"
-                    answer="はい、東京都内全域をはじめ、近隣の千葉県・埼玉県でも無料で現地調査・お見積りを行っております。地域密着を心がけつつ、フットワーク軽く対応いたしますのでお気軽にご相談ください。"
-                  />
-                  <FaqItem 
-                    question="外壁塗装や屋根塗装の最適な時期・目安はいつですか？"
-                    answer="一般的に築10年〜15年が塗り替えの目安と言われています。外壁を触って白い粉が付く（チョーキング）、ひび割れ（クラック）がある、コーキングが割れている等の症状が見られたら、建物の劣化を防ぐためにお早めの現地調査をおすすめします。"
-                  />
-                  <FaqItem 
-                    question="工事期間中、普段通りに生活することはできますか？"
-                    answer="はい、普段通り生活していただけます。外装工事のため室内に立ち入ることは基本的にはございません。ただし、足場やメッシュシートの設置により日当たりが悪くなる場合や、塗料の臭いが発生する工程がございます。事前にお客様や近隣の方へご説明と配慮を徹底いたします。"
-                  />
-                  <FaqItem 
-                    question="雨漏り修理や、一部分だけの小さな塗装工事でも依頼できますか？"
-                    answer="はい、大歓迎です。葛飾区や足立区の地域密着業者として、急な雨漏りの調査・修理から、付帯部のみのちょっとした塗装工事、コーキングの打ち替えまで、規模の大小を問わず迅速に対応いたします。"
-                  />
-                  <FaqItem 
-                    question="塗装工事の費用や相場が分からないので不安です。"
-                    answer="西城建装は下請け業者を挟まない完全自社施工のため、中間マージンが発生せず、適正価格でのご案内が可能です。現地調査のうえで明確な見積書を無料で作成し、塗料の種類や工事内容について分かりやすくご説明いたします。"
-                  />
-                  <FaqItem 
-                    question="他社で見積もりを取っていますが、相見積もりでも大丈夫ですか？"
-                    answer="もちろん大丈夫です。外壁塗装や屋根リフォームは高額な工事となるため、複数社で比較検討されることをおすすめしています。西城建装では完全自社施工による適正価格と施工内容でご提案させていただきます。"
-                  />
-                </div>
-              </div>
-            </section>
-
-            <section id="area" className="py-24 bg-[#f8fafc] border-t border-slate-200">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal-target opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                <div className="text-center mb-20">
-                  <div className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-blue-50 text-blue-700 font-bold tracking-widest text-xs mb-6 shadow-sm border border-blue-100">
-                    SERVICE AREA
-                  </div>
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-8 tracking-tight">
-                    対応エリア
-                  </h2>
-                  <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto rounded-full shadow-sm mb-10"></div>
-                  <p className="text-slate-600 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-medium tracking-wide">
-                    葛飾区・足立区を中心に、関東広域の外装工事に対応しております。<br className="hidden md:block" />記載のない地域における雨漏り修理やリフォームについてもお気軽にご相談ください。
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                  <div className="bg-white rounded-[2rem] p-8 lg:p-10 border border-slate-100 shadow-[0_4px_20px_rgb(0,0,0,0.02)] hover:shadow-[0_12px_30px_rgb(0,0,0,0.05)] transition-shadow duration-500 group">
-                    <div className="flex items-center mb-8 pb-8 border-b border-slate-100">
-                      <div className="bg-blue-50 p-4 rounded-2xl mr-5">
-                        <IconMapPin className="h-8 w-8" />
-                      </div>
-                      <h3 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-wide">東京都 葛飾区</h3>
-                    </div>
-                    <p className="text-slate-600 leading-relaxed text-sm lg:text-base font-medium tracking-wide">
-                      東堀切（所在地） / 青戸 / 奥戸 / お花茶屋 / 金町 / 鎌倉 / 亀有 / 小菅 / 柴又 / 白鳥 / 新小岩 / 高砂 / 宝町 / 立石 / 新宿 / 西亀有 / 西新小岩 / 西水元 / 東金町 / 東新小岩 / 東立石 / 東水元 / 東四つ木 / 細田 / 堀切 / 水元 / 南水元 / 四つ木 などの全域
-                    </p>
-                  </div>
-
-                  <div className="bg-white rounded-[2rem] p-8 lg:p-10 border border-slate-100 shadow-[0_4px_20px_rgb(0,0,0,0.02)] hover:shadow-[0_12px_30px_rgb(0,0,0,0.05)] transition-shadow duration-500 group">
-                    <div className="flex items-center mb-8 pb-8 border-b border-slate-100">
-                      <div className="bg-blue-50 p-4 rounded-2xl mr-5">
-                        <IconMapPin className="h-8 w-8" />
-                      </div>
-                      <h3 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-wide">東京都 足立区</h3>
-                    </div>
-                    <p className="text-slate-600 leading-relaxed text-sm lg:text-base font-medium tracking-wide">
-                      青井 / 足立 / 綾瀬 / 伊興 / 梅島 / 梅田 / 扇 / 大谷田 / 興野 / 小台 / 加賀 / 加平 / 北鹿浜町 / 栗原 / 弘道 / 江北 / 古千谷 / 佐野 / 鹿浜 / 島根 / 新田 / 神明 / 関原 / 千住 / 竹の塚 / 辰沼 / 中央本町 / 椿 / 東和 / 舎人 / 中川 / 西新井 / 花畑 / 保木間 / 六木 / 谷在家 / 六町 など幅広く対応
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-[2rem] p-10 border border-slate-100 shadow-[0_4px_20px_rgb(0,0,0,0.02)] text-center relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400"></div>
-                  <h3 className="text-lg lg:text-xl font-black text-slate-900 mb-8 tracking-widest">その他対応可能エリア</h3>
-                  <div className="flex flex-wrap justify-center gap-3 md:gap-4 text-sm font-bold text-slate-600 tracking-wide">
-                    <span className="bg-slate-50 px-6 py-3 rounded-full border border-slate-200">東京都全域（23区・多摩）</span>
-                    <span className="bg-slate-50 px-6 py-3 rounded-full border border-slate-200">千葉県（松戸市・市川市等）</span>
-                    <span className="bg-slate-50 px-6 py-3 rounded-full border border-slate-200">埼玉県（八潮市・三郷市等）</span>
-                    <span className="bg-slate-50 px-6 py-3 rounded-full border border-slate-200">神奈川県</span>
-                    <span className="bg-slate-50 px-6 py-3 rounded-full border border-slate-200">山梨県</span>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section id="contact" className="py-24 relative overflow-hidden bg-blue-600">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 z-0"></div>
-              <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-cyan-400 rounded-full opacity-20 blur-[100px] pointer-events-none z-0"></div>
-              <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-blue-400 rounded-full opacity-20 blur-[100px] pointer-events-none z-0"></div>
-              
-              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal-target opacity-0 translate-y-8 transition-all duration-1000 ease-out">
-                <div className="text-center mb-16">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-8 tracking-tight drop-shadow-md">
-                    住まいのお悩み、まずはご相談ください
-                  </h2>
-                  <p className="text-blue-100 text-lg md:text-xl font-medium leading-relaxed max-w-3xl mx-auto tracking-wide">
-                    外壁塗装、屋根塗装、雨漏りなどのご相談・お見積りは無料です。<br className="hidden md:block" />他社との相見積もりも歓迎いたします。職人が直接お打ち合わせにお伺いします。
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                  <button onClick={handlePhoneClick} className="bg-white/95 backdrop-blur-md rounded-[2.5rem] p-8 lg:p-10 flex flex-col items-center justify-center hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all duration-500 transform hover:-translate-y-2 group w-full border border-white/40 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="bg-gradient-to-br from-orange-100 to-orange-200 p-5 rounded-2xl mb-8 group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-500 shadow-inner relative z-10">
-                      <IconPhone className="h-10 w-10 transition-colors duration-500" />
-                    </div>
-                    <span className="text-sm text-slate-500 font-bold mb-3 tracking-widest relative z-10">お電話でのご相談</span>
-                    <span className="text-2xl lg:text-3xl font-black text-slate-900 tracking-wider mb-4 relative z-10">080-1271-1113</span>
-                    <span className="text-xs font-bold text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full relative z-10 tracking-widest">営業時間: 8:00 - 18:00</span>
-                  </button>
-
-                  <a href="https://line.me/ti/p/~2525aiki" target="_blank" rel="noopener noreferrer" className="bg-white/95 backdrop-blur-md rounded-[2.5rem] p-8 lg:p-10 flex flex-col items-center justify-center hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all duration-500 transform hover:-translate-y-2 group border border-white/40 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="bg-gradient-to-br from-[#06C755]/10 to-[#06C755]/20 p-5 rounded-2xl mb-8 group-hover:from-[#06C755] group-hover:to-[#05b34c] transition-all duration-500 shadow-inner relative z-10">
-                      <IconMessage className="h-10 w-10 transition-colors duration-500" />
-                    </div>
-                    <span className="text-sm text-slate-500 font-bold mb-3 tracking-widest relative z-10">LINEでのご相談</span>
-                    <span className="text-xl lg:text-2xl font-black text-slate-900 tracking-wider mb-4 relative z-10">ID: 2525aiki</span>
-                    <span className="text-xs font-bold text-[#06C755] bg-green-50 px-4 py-1.5 rounded-full relative z-10 tracking-widest">写真の送信で見積り可能</span>
-                  </a>
-
-                  <button onClick={handleEmailClick} className="bg-white/95 backdrop-blur-md rounded-[2.5rem] p-8 lg:p-10 flex flex-col items-center justify-center hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all duration-500 transform hover:-translate-y-2 group w-full border border-white/40 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-5 rounded-2xl mb-8 group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-500 shadow-inner relative z-10">
-                      <IconMail className="h-10 w-10 transition-colors duration-500" />
-                    </div>
-                    <span className="text-sm text-slate-500 font-bold mb-3 tracking-widest relative z-10">メールでのご相談</span>
-                    <span className="text-sm lg:text-base font-black text-slate-900 break-all text-center mb-4 relative z-10 tracking-wider">as12711113<br/>@gmail.com</span>
-                    <span className="text-xs font-bold text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full relative z-10 tracking-widest">24時間受付中</span>
-                  </button>
-                </div>
-              </div>
-            </section>
-
-          </main>
-
-          <footer className="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
-                <div>
-                  <div className="mb-8 inline-block cursor-pointer group" onClick={() => scrollToSection('home')}>
-                    <div className="bg-[#f8fafc] px-6 py-4 rounded-2xl shadow-sm border border-slate-100 group-hover:shadow-md transition-shadow duration-300 flex items-center">
-                      <img src="ロゴ08_saijo.jpg" alt="西城建装シンボル" className="h-10 md:h-12 w-auto object-contain mix-blend-multiply mr-3" />
-                      <img src="ロゴ09_saijo.jpg" alt="西城建装ロゴテキスト" className="h-8 md:h-10 w-auto object-contain mix-blend-multiply" />
-                    </div>
-                  </div>
-                  <ul className="space-y-4 text-sm font-medium tracking-wide">
-                    <li className="flex"><span className="text-slate-500 w-24 flex-shrink-0">代表者</span><span className="text-slate-300">西城 愛希</span></li>
-                    <li className="flex"><span className="text-slate-500 w-24 flex-shrink-0">所在地</span><span className="text-slate-300">〒124-0004 東京都葛飾区東堀切2-1-8-レジデンスキミ303</span></li>
-                    <li className="flex"><span className="text-slate-500 w-24 flex-shrink-0">事業内容</span><span className="text-slate-300">外壁塗装工事、内装塗装工事、シーリング工事、防水工事、屋根工事、リフォーム工事</span></li>
-                    <li className="flex"><span className="text-slate-500 w-24 flex-shrink-0">対応エリア</span><span className="text-slate-300">東京都葛飾区・足立区を中心に、東京都内全域、千葉県、埼玉県、神奈川県など</span></li>
-                  </ul>
-                </div>
-                <div className="md:text-right flex flex-col justify-between">
-                  <div>
-                    <div className="inline-block bg-slate-800 px-6 py-3 rounded-xl text-slate-300 text-sm font-bold border border-slate-700 mb-8 tracking-widest">
-                      営業時間: 8:00 - 18:00
-                    </div>
-                    <div className="flex flex-wrap md:justify-end gap-x-6 gap-y-4 text-sm font-bold text-slate-500 tracking-wide">
-                      {navItems.map((item, idx) => (
-                        <button key={idx} onClick={() => scrollToSection(item.id)} className="hover:text-white transition-colors duration-300">{item.label}</button>
-                      ))}
-                      <a href="privacy.html" className="hover:text-white transition-colors duration-300">プライバシーポリシー</a>
-                    </div>
-                  </div>
-                  <p className="text-xs mt-12 text-slate-600 font-bold tracking-widest">
-                    &copy; {new Date().getFullYear()} 西城建装 All Rights Reserved.
-                  </p>
-                </div>
-              </div>
             </div>
-          </footer>
-
-          <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 flex z-50 shadow-[0_-10px_20px_rgba(0,0,0,0.05)] pb-[env(safe-area-inset-bottom)]">
-            <button onClick={handlePhoneClick} className="group flex-1 flex flex-col items-center justify-center py-3.5 bg-gradient-to-b from-orange-500 to-orange-600 text-white font-bold text-xs active:from-orange-600 active:to-orange-700 transition-colors relative overflow-hidden tracking-widest">
-              <IconPhone className="h-6 w-6 mb-1 relative z-10" />
-              <span className="relative z-10">電話相談</span>
-            </button>
-            <a href="https://line.me/ti/p/~2525aiki" target="_blank" rel="noopener noreferrer" className="group flex-1 flex flex-col items-center justify-center py-3.5 bg-gradient-to-b from-[#06C755] to-[#05b34c] text-white font-bold text-xs border-l border-white/20 active:from-[#05b34c] active:to-[#04a044] transition-colors relative overflow-hidden tracking-widest">
-              <IconMessage className="h-6 w-6 mb-1 relative z-10" />
-              <span className="relative z-10">LINE相談</span>
-            </a>
-          </div>
-
         </div>
-      );
-    }
+    </header>
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
-  </script>
+    <!-- モバイルドロワー -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-lg opacity-0 visibility-hidden pointer-events-none transition-all">
+        <div id="mobile-menu-content" class="absolute right-0 top-0 h-full w-[85%] max-w-sm bg-dark p-12 flex flex-col shadow-2xl transition-transform">
+            <nav class="flex flex-col space-y-6 mt-16 text-center">
+                <a href="#concept" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link hover:text-primary transition-colors">CONCEPT</a>
+                <a href="#promises" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link hover:text-primary transition-colors">4 PROMISES</a>
+                <a href="#features" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link hover:text-primary transition-colors">FEATURES</a>
+                <a href="#results" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link hover:text-primary transition-colors">RESULTS</a>
+                <a href="#pricing" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link hover:text-primary transition-colors">PRICING</a>
+                <a href="#trainer" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link hover:text-primary transition-colors">TRAINER</a>
+                <a href="#access" class="text-lg font-bold tracking-[0.3em] text-white border-b border-gray-800 pb-4 menu-link hover:text-primary transition-colors">ACCESS</a>
+            </nav>
+            <div class="mt-auto space-y-4">
+                <a href="#contact" class="block w-full bg-primary text-black text-center py-5 font-bold tracking-widest rounded-sm menu-link active:scale-95 transition-transform">体験トレーニング予約</a>
+                <a href="https://lin.ee/lYptjpN" target="_blank" class="block w-full bg-line text-white text-center py-5 font-bold tracking-widest rounded-sm flex items-center justify-center active:scale-95 transition-transform">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.122.303.079.759.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.304z"/></svg>
+                    LINEで相談する
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- メイン -->
+    <main>
+        <!-- ヒーロー -->
+        <section class="relative bg-hero h-[100svh] flex items-center justify-center overflow-hidden">
+            <div class="text-center px-4 w-full max-w-5xl z-10">
+                <p class="text-primary text-xs md:text-sm font-bold tracking-[0.5em] mb-6 uppercase text-glow">Nakameguro / Daikanyama Private Gym</p>
+                <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight leading-[1.1] text-glow uppercase">身体が変われば、<br>人生の景色が変わる</h1>
+                <p class="text-base sm:text-lg md:text-xl text-gray-200 mb-12 tracking-widest leading-loose font-light">QOLを最大化するトレーニングサロン『EYLG（エイルグ）』</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6 px-4">
+                    <a href="#contact" class="w-full sm:w-auto bg-primary text-black px-12 py-5 text-base md:text-lg font-bold tracking-widest hover:bg-yellow-600 transition-all rounded-sm text-center shadow-2xl transform hover:-translate-y-1 active:scale-95">無料体験予約はこちら</a>
+                </div>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-darker to-transparent"></div>
+        </section>
+
+        <!-- コンセプト -->
+        <section id="concept" class="py-24 md:py-40 bg-dark">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase text-glow">The Concept</h2>
+                <div class="w-16 h-px bg-primary mx-auto mb-14 opacity-50"></div>
+                <h3 class="text-2xl md:text-5xl font-bold text-white mb-12 tracking-widest leading-tight">Enrich Your Life GYM</h3>
+                <div class="text-left md:text-center space-y-10 text-gray-300 text-sm md:text-lg leading-loose font-light">
+                    <p>EYLG（エイルグ）は、<span class="text-white font-bold tracking-widest uppercase">Enrich Your Life GYM</span> の頭文字。<br>身体だけでなく、人生そのものを豊かに彩りたいという強い想いから誕生しました。</p>
+                    <p>北欧神話において「癒やし」を司る女神エイルの名を冠したこの場所は、ハードな鍛錬と心身を深く整えるリトリートを融合させた、中目黒・代官山の「隠れ家」です。</p>
+                    <p class="text-white font-bold text-xl md:text-2xl pt-4">中目黒・代官山の静寂なる没入空間で、<br>あなただけの「身体の再定義」を。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4つの約束 -->
+        <section id="promises" class="py-24 md:py-40 bg-darker">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase text-center text-glow">4 Promises</h2>
+                <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
+                <p class="text-white text-2xl md:text-4xl font-bold tracking-widest mb-20 md:mb-32">EYLGが提供する4つの価値</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
+                    <article class="bg-panel border border-gray-800 p-10 hover-card rounded-sm group cursor-default">
+                        <div class="text-primary text-5xl font-serif mb-8 italic opacity-50 group-hover:opacity-100 group-hover:text-glow transition-all">Energy</div>
+                        <h4 class="text-white font-bold mb-6 text-xl tracking-widest uppercase">エネルギー</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed font-light">日々のパフォーマンスを最大化。仕事も遊びも全力で楽しめる、疲れにくい「動ける体」を手に入れます。</p>
+                    </article>
+                    <article class="bg-panel border border-gray-800 p-10 hover-card rounded-sm group cursor-default">
+                        <div class="text-primary text-5xl font-serif mb-8 italic opacity-50 group-hover:opacity-100 group-hover:text-glow transition-all">Youthful</div>
+                        <h4 class="text-white font-bold mb-6 text-xl tracking-widest uppercase">ユースフル</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed font-light">科学的なアプローチで外見の美しさを磨き、マインドの若々しさを維持。年齢を言い訳にしない人生へ。</p>
+                    </article>
+                    <article class="bg-panel border border-gray-800 p-10 hover-card rounded-sm group cursor-default">
+                        <div class="text-primary text-5xl font-serif mb-8 italic opacity-50 group-hover:opacity-100 group-hover:text-glow transition-all">Luxury</div>
+                        <h4 class="text-white font-bold mb-6 text-xl tracking-widest uppercase">ラグジュアリー</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed font-light">洗練された没入空間での特別な時間。日常の緊張を解放する、至福のメンテナンスとストレッチを提供。</p>
+                    </article>
+                    <article class="bg-panel border border-gray-800 p-10 hover-card rounded-sm group cursor-default">
+                        <div class="text-primary text-5xl font-serif mb-8 italic opacity-50 group-hover:opacity-100 group-hover:text-glow transition-all">Glow</div>
+                        <h4 class="text-white font-bold mb-6 text-xl tracking-widest uppercase">グロウ</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed font-light">セッション後、内側から光り輝く自分へ。圧倒的な達成感と自信が、あなたの日常を明るく照らし出します。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 特徴：FEATURES -->
+        <section id="features" class="py-24 md:py-40 bg-dark">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-24 md:mb-32">
+                    <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase text-glow">Features</h2>
+                    <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
+                    <p class="text-white text-2xl md:text-4xl font-bold tracking-widest">没入体験。自分を研ぎ澄ます設計</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+                    <article class="bg-panel border border-gray-800 p-10 md:p-12 hover-card flex flex-col xl:flex-row gap-8 items-center rounded-sm">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-3xl font-bold flex-shrink-0 italic">01</div>
+                        <div class="space-y-4 text-center xl:text-left">
+                            <h4 class="text-xl font-bold text-white tracking-widest uppercase">30分で約800kcal燃焼</h4>
+                            <p class="text-sm text-gray-500 leading-loose font-light">パーソナルトレーニング監修だからこそ可能。EPOC（運動後過剰酸素消費量）効果を最大化し、効率的に脂肪を燃焼させます。</p>
+                        </div>
+                    </article>
+                    <article class="bg-panel border border-gray-800 p-10 md:p-12 hover-card flex flex-col xl:flex-row gap-8 items-center rounded-sm">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-3xl font-bold flex-shrink-0 italic">02</div>
+                        <div class="space-y-4 text-center xl:text-left">
+                            <h4 class="text-xl font-bold text-white tracking-widest uppercase">暗闇×音楽の感覚遮断空間</h4>
+                            <p class="text-sm text-gray-500 leading-loose font-light">視覚を制限する暗闇と高揚感を煽るクラブミュージック。周囲の視線を気にせず、自身の筋肉の動きだけに全神経を没入させます。</p>
+                        </div>
+                    </article>
+                    <article class="bg-panel border border-gray-800 p-10 md:p-12 hover-card flex flex-col xl:flex-row gap-8 items-center rounded-sm">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-3xl font-bold flex-shrink-0 italic">03</div>
+                        <div class="space-y-4 text-center xl:text-left">
+                            <h4 class="text-xl font-bold text-white tracking-widest uppercase">鍛えるだけではない「整える」ケア</h4>
+                            <p class="text-sm text-gray-500 leading-loose font-light">追い込むだけのトレーニングは卒業。Luxuryなストレッチとコンディショニングを融合し、日常の緊張をリセットし機能的な身体へ。</p>
+                        </div>
+                    </article>
+                    <article class="bg-panel border border-gray-800 p-10 md:p-12 hover-card flex flex-col xl:flex-row gap-8 items-center rounded-sm">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-3xl font-bold flex-shrink-0 italic">04</div>
+                        <div class="space-y-4 text-center xl:text-left">
+                            <h4 class="text-xl font-bold text-white tracking-widest uppercase">食べて燃やせる身体づくり</h4>
+                            <p class="text-sm text-gray-500 leading-loose font-light">極端な制限ではなく「代謝を高める」アプローチ。一生モノの知識を提供し、リバウンドのない真のボディメイクを実現します。</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 5-Star Hospitality (画像を使わず美しいテキストレイアウトで表現) -->
+                <div class="bg-panel border border-gray-800 p-12 md:p-20 text-center rounded-sm shadow-2xl hover-card max-w-5xl mx-auto">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase mb-8 italic text-glow">5-Star Hospitality</h3>
+                    <p class="text-white font-bold text-xl md:text-2xl tracking-widest mb-10">一流の環境で、自分と向き合う</p>
+                    <p class="text-gray-400 text-sm md:text-base leading-loose font-light max-w-3xl mx-auto">
+                        中目黒・代官山エリアの感度の高い皆様に相応しい、上質なホスピタリティを提供。<br class="hidden md:block">
+                        ウェア、タオル、シューズ、ミネラルウォーター、プロテインまで、トレーニングに必要なものは全て料金に含まれております。<br>
+                        お仕事帰りやお出かけ前にも、手ぶらでお越しいただける極上のリトリート体験をお楽しみください。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 実績：RESULTS -->
+        <section id="results" class="py-24 md:py-40 bg-darker">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase text-center text-glow">Results</h2>
+                <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
+                <p class="text-white text-2xl md:text-4xl font-bold tracking-widest mb-16 md:mb-24">変化を証明する、お客様の実績</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto text-left">
+                    <article class="bg-panel border border-gray-800 p-10 rounded-sm hover-card shadow-xl cursor-default">
+                        <div class="flex justify-between items-center mb-8 border-b border-gray-800 pb-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1 tracking-widest font-serif uppercase">A.K 様 (34)</h3>
+                                <p class="text-xs text-gray-500 uppercase tracking-widest font-bold">Total Transformation</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-primary text-4xl font-bold tracking-tighter">-8.5<span class="text-xs ml-1 font-normal">kg</span></span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-8 h-48">
+                            <div class="bg-gray-900 flex items-center justify-center border border-gray-800 rounded-sm relative overflow-hidden">
+                                <span class="text-[10px] text-gray-600 font-bold uppercase tracking-widest z-10">Before</span>
+                            </div>
+                            <div class="bg-gray-800 flex items-center justify-center border border-gray-700 rounded-sm relative overflow-hidden">
+                                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest z-10">After</span>
+                            </div>
+                        </div>
+                        <blockquote class="text-sm text-gray-300 leading-loose italic font-light">
+                            「中目黒のプライベート空間と、阿部さんの論理的な指導に救われました。暗闇環境は集中力が高まり、仕事のストレス発散にも最適でした。」
+                        </blockquote>
+                    </article>
+                    <article class="bg-panel border border-gray-800 p-10 rounded-sm hover-card shadow-xl cursor-default">
+                        <div class="flex justify-between items-center mb-8 border-b border-gray-800 pb-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1 tracking-widest font-serif uppercase">M.T 様 (28)</h3>
+                                <p class="text-xs text-gray-500 uppercase tracking-widest font-bold">Shape Up & Recovery</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-primary text-4xl font-bold tracking-tighter">-5.2<span class="text-xs ml-1 font-normal">kg</span></span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-8 h-48">
+                            <div class="bg-gray-900 flex items-center justify-center border border-gray-800 rounded-sm relative overflow-hidden">
+                                <span class="text-[10px] text-gray-600 font-bold uppercase tracking-widest z-10">Before</span>
+                            </div>
+                            <div class="bg-gray-800 flex items-center justify-center border border-gray-700 rounded-sm relative overflow-hidden">
+                                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest z-10">After</span>
+                            </div>
+                        </div>
+                        <blockquote class="text-sm text-gray-300 leading-loose italic font-light">
+                            「姿勢が劇的に改善。最後のストレッチが本当に贅沢。誰にも会わずに通えるのが、このエリアで一番の安心材料です。」
+                        </blockquote>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 料金：PRICING -->
+        <section id="pricing" class="py-24 md:py-40 bg-dark text-center">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase text-center text-glow">Pricing</h2>
+                <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
+                <p class="text-white text-2xl md:text-4xl font-bold tracking-widest mb-20 md:mb-32">投資に見合う、人生のアップグレード</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto items-stretch mb-24">
+                    <div class="flex flex-col space-y-6">
+                        <div class="bg-panel border border-gray-800 p-2 overflow-hidden rounded-sm hover-card group h-full flex items-center justify-center">
+                            <img src="eylg_plan01.jpg" alt="ボディメイクプラン料金表" class="max-w-full h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-700" loading="lazy">
+                        </div>
+                        <div class="bg-panel p-10 border border-gray-800 text-left rounded-sm hover-card">
+                            <h3 class="text-xl font-bold text-white mb-6 uppercase tracking-widest italic border-b border-gray-800 pb-4">Body Make Plan</h3>
+                            <ul class="text-gray-400 text-sm space-y-5 font-light">
+                                <li class="flex items-center"><span class="text-primary mr-4 text-lg">✓</span> <span><span class="font-bold">Ultimate (12回)：</span>¥99,800</span></li>
+                                <li class="flex items-center"><span class="text-primary mr-4 text-lg">✓</span> <span><span class="font-bold">Platinum (8回)：</span>¥75,000</span></li>
+                                <li class="flex items-center"><span class="text-primary mr-4 text-lg">✓</span> <span><span class="font-bold text-white">Gold (6回)：</span>¥57,600 / <span class="font-bold text-white ml-1">Essence (4回)：</span>¥39,800</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-6">
+                        <div class="bg-panel border border-gray-800 p-2 overflow-hidden rounded-sm hover-card group h-full flex items-center justify-center">
+                            <img src="eylg_plan02.jpg" alt="その他チケット・オプション料金表" class="max-w-full h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-700" loading="lazy">
+                        </div>
+                        <div class="bg-panel p-10 border border-primary text-left rounded-sm hover-card shadow-2xl shadow-yellow-900/10">
+                            <h3 class="text-xl font-bold text-white mb-6 uppercase tracking-widest italic border-b border-gray-800 pb-4">Others & Options</h3>
+                            <ul class="text-gray-400 text-sm space-y-5 font-light text-white">
+                                <li class="flex items-center"><span class="text-primary mr-4 text-lg">✓</span> <span><span class="font-bold">Luxury Drop-In：</span>¥13,200 (1回80分)</span></li>
+                                <li class="flex items-center"><span class="text-primary mr-4 text-lg">✓</span> <span><span class="font-bold">DEEP Recovery：</span>¥2,200 (延長15分)</span></li>
+                                <li class="flex items-center"><span class="text-primary mr-4 text-lg">✓</span> <span><span class="font-bold">Inner Glow Design：</span>¥5,500 (1ヶ月食事サポート)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600 text-[10px] tracking-[0.2em] uppercase font-bold">※別途入会金 ¥33,000(税込)が必要です。全コース手ぶらレンタル付き。</p>
+            </div>
+        </section>
+
+        <!-- 体験：Trial -->
+        <section id="trial" class="py-24 md:py-40 bg-darker">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase text-center text-glow">Trial Session</h2>
+                <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
+                <h3 class="text-2xl md:text-4xl font-bold text-white tracking-widest mb-16 uppercase">EYLGを肌で感じる初回体験</h3>
+                
+                <div class="bg-panel border border-gray-800 p-6 md:p-16 rounded-sm shadow-2xl flex flex-col lg:flex-row gap-16 items-center hover-card">
+                    <div class="w-full lg:w-1/2 group">
+                        <img src="eylg_trial.jpg" alt="初回体験レッスンの流れ図解" class="w-full h-auto object-contain rounded-sm shadow-lg grayscale group-hover:grayscale-0 transition-all duration-700" loading="lazy">
+                    </div>
+                    <div class="w-full lg:w-1/2 text-left space-y-10">
+                        <div class="bg-darker border-l-4 border-primary p-10 shadow-lg">
+                            <p class="text-primary font-bold text-2xl tracking-[0.3em] mb-3 uppercase italic">First Glow Fee</p>
+                            <p class="text-white text-4xl font-bold">60min / ¥5,500 <span class="text-xs font-normal opacity-50 tracking-normal">(税込)</span></p>
+                        </div>
+                        <div class="space-y-6">
+                            <h4 class="text-white font-bold tracking-[0.2em] border-b border-gray-800 pb-3 italic uppercase text-lg">Step to Transformation</h4>
+                            <ul class="text-xs text-gray-500 space-y-4 font-light leading-relaxed">
+                                <li class="flex justify-between border-b border-gray-900 pb-2 italic"><span>01. カウンセリング</span><span>10min</span></li>
+                                <li class="flex justify-between border-b border-gray-900 pb-2 italic"><span>02. 姿勢チェック・ストレッチ</span><span>15min</span></li>
+                                <li class="flex justify-between border-b border-gray-900 pb-2 text-white font-bold italic"><span>03. 暗闇トレーニング開始</span><span>25min</span></li>
+                                <li class="flex justify-between pb-2 italic font-bold text-primary"><span>04. アフターフィードバック</span><span>10min</span></li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="block w-full bg-primary text-black text-center py-6 font-bold tracking-[0.4em] uppercase hover:bg-yellow-600 transition-all rounded-sm shadow-2xl transform hover:-translate-y-1 active:scale-95">Book Experience</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- トレーナー -->
+        <section id="trainer" class="py-24 md:py-40 bg-dark">
+            <div class="max-w-5xl mx-auto px-6 text-center text-left">
+                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase text-center text-glow">The Trainer</h2>
+                <div class="w-16 h-px bg-primary mx-auto mb-16 opacity-50"></div>
+
+                <article class="flex flex-col md:flex-row items-center bg-panel border border-gray-800 overflow-hidden shadow-2xl rounded-sm text-left hover-card group">
+                    <div class="w-full md:w-1/2 aspect-square md:aspect-auto md:min-h-[700px] overflow-hidden relative">
+                        <img src="eylg_face01.jpg" alt="中目黒のパーソナルトレーナー阿部 京平" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000" loading="lazy">
+                    </div>
+                    <div class="w-full md:w-1/2 p-10 md:p-20">
+                        <div class="text-primary text-[10px] font-bold tracking-[0.4em] mb-6 uppercase italic">Founder / Chief Instructor</div>
+                        <h3 class="text-3xl font-bold text-white mb-10 tracking-widest font-serif">阿部 京平 <span class="text-sm font-normal text-gray-500 ml-4 italic uppercase tracking-[0.2em] font-sans">Kyohei Abe</span></h3>
+                        <div class="space-y-8 text-gray-400 text-sm md:text-base leading-loose font-light">
+                            <p>
+                                元FEELCYCLE最年少SV（スーパーバイザー）。表参道・銀座店など重要拠点の店長を歴任。所属店舗を売上全国1位へ導き、数千セッションを通じて「身体が人生に与えるインパクト」を追求してきたボディメイクのスペシャリスト。
+                            </p>
+                            <p>
+                                LUSTER LIVE（幕張メッセ）といった1万人規模のフィットウェアイベントでの出演や、著名人とのセッション経験を経てEYLGを設立。解剖学的正しさと、心が高揚する没入演出を両立させた唯一無二の指導を提供します。
+                            </p>
+                        </div>
+                        <div class="border-t border-gray-800 mt-12 pt-10 font-bold uppercase tracking-widest">
+                            <p class="text-[10px] text-gray-500 mb-8 tracking-[0.3em] uppercase">Professional Expertise</p>
+                            <ul class="text-[11px] text-gray-500 space-y-5 font-light normal-case tracking-wide">
+                                <li class="flex items-start"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 mr-5 flex-shrink-0"></span> NSCA-CPT（全米ストレングス&コンディショニング協会認定）</li>
+                                <li class="flex items-start"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 mr-5 flex-shrink-0"></span> NESTA-PFT（全米エクササイズ&スポーツトレーナー協会認定）</li>
+                                <li class="flex items-start"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 mr-5 flex-shrink-0"></span> プロテインマイスター / 健康運動実践指導者 / 元FeelCycle SV</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- アクセス：SEO地域情報と正確な住所（画像内容のテキスト化） -->
+        <section id="access" class="py-24 md:py-40 bg-darker border-b border-gray-900">
+            <div class="max-w-5xl mx-auto px-6 text-center text-left text-center">
+                <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase text-glow">Access</h2>
+                <div class="w-16 h-px bg-primary mx-auto mb-16 opacity-50"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 text-left max-w-5xl mx-auto">
+                    <div class="space-y-12">
+                        <div class="hover-card bg-panel p-10 border border-gray-800 rounded-sm shadow-xl">
+                            <h3 class="text-2xl font-bold text-white mb-10 tracking-widest uppercase italic">EYLG <span class="text-xs font-normal text-primary ml-3 tracking-widest font-serif">Nakameguro</span></h3>
+                            <table class="w-full text-sm text-gray-400 text-left border-collapse font-light tracking-widest">
+                                <tbody class="divide-y divide-gray-800 border-t border-gray-800">
+                                    <tr>
+                                        <th class="py-6 font-bold text-gray-300 w-28 align-top tracking-widest uppercase italic">Address</th>
+                                        <td class="py-6 leading-loose text-white font-bold">
+                                            〒153-0061<br>
+                                            東京都目黒区中目黒 1-4-20<br>
+                                            サードリハイツ本館702<br>
+                                            <span class="text-gray-500 font-normal">（完全個室・完全予約制）</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="py-6 font-bold text-gray-300 tracking-widest uppercase italic">Station</th>
+                                        <td class="py-6 leading-loose font-bold">
+                                            東急東横線・日比谷線「<span class="text-white underline underline-offset-8 decoration-primary decoration-2">中目黒駅</span>」徒歩5分<br>
+                                            東急東横線「<span class="text-white underline underline-offset-8 decoration-primary decoration-2">代官山駅</span>」徒歩8分
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="py-6 font-bold text-gray-300 tracking-widest uppercase italic">Opening</th>
+                                        <td class="py-6 font-bold text-white">09:00 - 21:00 <span class="text-[10px] text-gray-600 ml-2 font-normal italic">※最終セッション開始時間</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="py-6 font-bold text-gray-300 tracking-widest uppercase italic">Closed</th>
+                                        <td class="py-6 font-bold text-white">不定休 <span class="text-[10px] text-gray-600 ml-2 font-normal italic">※毎月1日に公式LINEにて配信</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="py-6 font-bold text-gray-300 tracking-widest uppercase italic align-top">Policy</th>
+                                        <td class="py-6 font-light text-gray-400 text-xs leading-loose">
+                                            <span class="text-white font-bold">予約・キャンセル：</span>前日の23:59までに公式LINEにて受付。<br>
+                                            ※当日キャンセルは手数料1,000円を頂戴いたします。振替は翌月まで1回のみ可能です。
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="py-6 font-bold text-gray-300 tracking-widest uppercase italic align-top">Payment</th>
+                                        <td class="py-6 font-light text-white text-sm">
+                                            現金 / 口座振込 / カード払い可<br>
+                                            <span class="text-[10px] text-gray-500 italic">※領収書発行可能</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- マップエリア -->
+                    <div class="h-full min-h-[450px] bg-panel border border-gray-800 flex items-center justify-center relative shadow-inner overflow-hidden rounded-sm hover-card group">
+                         <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors z-10 pointer-events-none"></div>
+                         <div class="text-center px-12 z-0">
+                             <p class="text-primary font-bold mb-6 tracking-[0.4em] uppercase italic text-xl">Google Map Area</p>
+                             <p class="text-[10px] text-gray-600 font-light tracking-[0.2em] leading-loose">
+                                中目黒駅正面改札より山手通りを代官山方面へ進み、<br>
+                                中目黒一丁目の交差点を左折してすぐ、サードリハイツ本館内。<br>
+                                迷われた際はお気軽にLINEでお問い合わせください。
+                             </p>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- コンタクト -->
+        <section id="contact" class="py-24 md:py-40 bg-dark">
+            <div class="max-w-6xl mx-auto px-6 text-center">
+                <div class="mb-20 md:mb-32">
+                    <h2 class="text-xs font-bold text-primary mb-6 tracking-[0.5em] uppercase text-glow">Contact</h2>
+                    <div class="w-16 h-px bg-primary mx-auto mb-10 opacity-50"></div>
+                    <p class="text-white text-3xl md:text-5xl font-bold tracking-widest mb-10 leading-tight">身体が変われば、<br class="sm:hidden">人生の景色が変わる。</p>
+                    <p class="text-gray-500 text-sm md:text-lg font-light tracking-widest italic leading-relaxed">
+                        まずは無料カウンセリング、または体験トレーニングへ。<br>
+                        強引な勧誘は一切行いません。安心してご相談ください。
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start text-left max-w-6xl mx-auto">
+                    <!-- LINE -->
+                    <div class="bg-panel border border-gray-800 p-12 text-center rounded-sm shadow-2xl hover-card group">
+                        <h3 class="text-xl font-bold text-white mb-8 tracking-widest uppercase italic border-b border-gray-800 pb-4">Line Reservation</h3>
+                        <p class="text-gray-400 text-sm leading-loose mb-12 font-light italic">公式LINEから、空き状況の確認、<br class="hidden sm:block">メッセージでの体験予約・相談がスムーズに可能です。</p>
+                        <a href="https://lin.ee/lYptjpN" target="_blank" rel="noopener noreferrer" class="w-full bg-line text-white font-bold py-6 flex items-center justify-center rounded-sm hover:brightness-110 transition-all shadow-xl shadow-green-900/20 transform hover:-translate-y-1 active:scale-95">
+                            <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.122.303.079.759.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.304z"/></svg>
+                            LINEで友だち追加
+                        </a>
+                    </div>
+                    <!-- フォーム -->
+                    <div class="bg-panel border border-gray-800 p-12 rounded-sm shadow-2xl hover-card">
+                        <form class="space-y-8 font-bold">
+                            <div class="group">
+                                <label class="block text-[10px] font-bold text-gray-500 mb-3 tracking-[0.3em] uppercase group-focus-within:text-primary transition-colors">Name / お名前</label>
+                                <input type="text" required class="w-full bg-darker border border-gray-800 px-5 py-4 text-white text-sm focus:outline-none focus:border-primary font-light transition-all" placeholder="お名前">
+                            </div>
+                            <div class="group">
+                                <label class="block text-[10px] font-bold text-gray-500 mb-3 tracking-[0.3em] uppercase group-focus-within:text-primary transition-colors">Email / アドレス</label>
+                                <input type="email" required class="w-full bg-darker border border-gray-800 px-5 py-4 text-white text-sm focus:outline-none focus:border-primary font-light transition-all" placeholder="example@mail.com">
+                            </div>
+                            <div class="group">
+                                <label class="block text-[10px] font-bold text-gray-500 mb-3 tracking-[0.3em] uppercase group-focus-within:text-primary transition-colors">Message / ご相談内容</label>
+                                <textarea rows="4" required class="w-full bg-darker border border-gray-800 px-5 py-4 text-white text-sm focus:outline-none focus:border-primary font-light transition-all" placeholder="体験希望日時や現在のお悩み"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary text-black font-bold py-6 tracking-[0.6em] hover:bg-yellow-600 transition-all uppercase text-sm shadow-xl transform hover:-translate-y-1 active:scale-95">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-black py-24 border-t border-gray-900 text-center px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12">
+                <a href="#" class="text-3xl font-bold tracking-[0.4em] text-white italic uppercase tracking-[0.2em] hover:text-primary transition-colors">EY<span class="text-primary">LG</span></a>
+                <p class="text-[10px] text-gray-600 mt-4 tracking-[0.5em] uppercase font-bold italic">Enrich Your Life GYM</p>
+            </div>
+            <p class="text-[10px] text-gray-700 tracking-widest uppercase mb-10 font-light italic">&copy; 2026 EYLG. All Rights Reserved.</p>
+            <div class="border-t border-gray-900 pt-10">
+                <p class="text-[9px] text-gray-800 tracking-tighter leading-relaxed max-w-3xl mx-auto font-light uppercase">
+                    中目黒・代官山エリア唯一の没入型パーソナルジム EYLG。ダイエット、ボディメイク、姿勢改善、機能改善、健康増進をプロフェッショナルトレーナーがマンツーマンでサポート。圧倒的な暗闇と音楽による高揚体験を提供。
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- スマホ追従CTA -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[94%] max-w-md z-[55] lg:hidden flex gap-2">
+        <a href="https://lin.ee/lYptjpN" target="_blank" class="flex-1 bg-line text-white py-4 rounded-sm flex items-center justify-center shadow-2xl text-[10px] font-bold tracking-tighter uppercase transition-all active:scale-90 border border-white/10">
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.122.303.079.759.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.304z"/></svg>
+            LINE相談
+        </a>
+        <a href="#contact" class="flex-[1.6] bg-primary text-black py-4 rounded-sm flex items-center justify-center shadow-2xl text-[10px] font-bold tracking-[0.1em] uppercase transition-all active:scale-90 border border-black/10">
+            体験予約を開始
+        </a>
+    </div>
+
+    <!-- スクリプト -->
+    <script>
+        const body = document.body;
+        const menuBtn = document.getElementById('menu-btn');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        function toggleMenu() {
+            body.classList.toggle('menu-open');
+            const isOpen = body.classList.contains('menu-open');
+            body.style.overflow = isOpen ? 'hidden' : '';
+            const spans = menuBtn.querySelectorAll('span');
+            if(isOpen) {
+                spans[0].style.transform = 'translateY(8px) rotate(45deg)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        menuLinks.forEach(link => link.addEventListener('click', () => { if (body.classList.contains('menu-open')) toggleMenu(); }));
+
+        // スムーススクロール制御
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    const offset = 80;
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = target.getBoundingClientRect().top;
+                    window.scrollTo({ top: elementRect - bodyRect - offset, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
